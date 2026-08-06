@@ -1,0 +1,32 @@
+===================================================================
+FIAP - CHECKPOINT 4 - PARTE 1 (API E DEPLOY)
+CURSO: ANÁLISE E DESENVOLVIMENTO DE SISTEMAS / ENGENHARIA DE SOFTWARE
+TURMA: 2TDSPG / 2TDSR (2026)
+PROJETO: Mercado Express API - Spring Boot + HATEOAS + Oracle DB
+IDE UTILIZADA: IntelliJ IDEA (2024.2.3 Ultimate Edition)
+===================================================================
+
+INTEGRANTES DO GRUPO:
+
+1. Gabriel Maciel Alves de Oliveira
+   RM: 562795
+
+2. Vitória Rodrigues Martins 
+   RM: 565160
+
+3. Augusto Bonomo Júnior 
+   RM: 565155
+
+4. Thomas Fontes 
+   RM: 562254
+
+5. Matheus Pereira Molina
+   RM: 563399
+
+===================================================================
+LINK DO REPOSITÓRIO GITHUB:
+https://github.com/Gabriel-Maciel06/CP4-Java.git
+
+LINK DE DEPLOY DA API:
+http://40.87.31.123:8082/swagger-ui.html
+===================================================================

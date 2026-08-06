@@ -1,0 +1,187 @@
+{
+	"info": {
+		"_postman_id": "a82b3c4d-5e6f-7a8b-9c0d-1e2f3a4b5c6d",
+		"name": "Mercado Express API - FIAP Checkpoint 4",
+		"description": "Coleção completa de testes HTTP (Postman / Insomnia) para a API RESTful Mercado Express.\n\nContém endpoints CRUD (Create, Read, Update, Delete) com suporte a HATEOAS (Maturidade Nível 3 de Richardson).\n\nServidor: http://localhost:8082\nBase Path: /mercado",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "GET - Listar Todos os Produtos (com HATEOAS)",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8082/mercado",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8082",
+					"path": [
+						"mercado"
+					]
+				},
+				"description": "Retorna a lista de todos os produtos do Mercado Express cadastrados no banco de dados Oracle, acompanhados dos links de navegação HATEOAS."
+			},
+			"response": []
+		},
+		{
+			"name": "GET - Listar por Filtro de Tipo",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8082/mercado?tipo=Limpeza",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8082",
+					"path": [
+						"mercado"
+					],
+					"query": [
+						{
+							"key": "tipo",
+							"value": "Limpeza"
+						}
+					]
+				},
+				"description": "Filtra produtos pelo tipo (ex: Limpeza, Alimentos, Brinquedos)."
+			},
+			"response": []
+		},
+		{
+			"name": "GET - Buscar Produto por ID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8082/mercado/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8082",
+					"path": [
+						"mercado",
+						"1"
+					]
+				},
+				"description": "Consulta um produto específico pelo ID."
+			},
+			"response": []
+		},
+		{
+			"name": "POST - Cadastrar Novo Produto (Create)",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"nome\": \"Sabão em Pó Ação Total 1kg\",\n  \"tipo\": \"Limpeza\",\n  \"setor\": \"Higiene e Limpeza\",\n  \"tamanho\": \"1kg\",\n  \"preco\": 18.90\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8082/mercado",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8082",
+					"path": [
+						"mercado"
+					]
+				},
+				"description": "Insere um novo produto no banco de dados Oracle."
+			},
+			"response": []
+		},
+		{
+			"name": "PUT - Atualizar Produto por Completo (Update)",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"nome\": \"Detergente Líquido Neutro Concentrado 500ml\",\n  \"tipo\": \"Limpeza\",\n  \"setor\": \"Higiene e Limpeza\",\n  \"tamanho\": \"500ml\",\n  \"preco\": 4.19\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8082/mercado/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8082",
+					"path": [
+						"mercado",
+						"1"
+					]
+				},
+				"description": "Atualiza todos os campos de um produto existente pelo ID."
+			},
+			"response": []
+		},
+		{
+			"name": "PATCH - Atualizar Produto Parcialmente (Patch)",
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"preco\": 3.99\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8082/mercado/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8082",
+					"path": [
+						"mercado",
+						"1"
+					]
+				},
+				"description": "Atualiza apenas os campos fornecidos no JSON (ex: alterar preço)."
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE - Excluir Produto por ID (Delete)",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8082/mercado/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8082",
+					"path": [
+						"mercado",
+						"1"
+					]
+				},
+				"description": "Remove um produto do banco de dados pelo ID."
+			},
+			"response": []
+		}
+	]
+}
