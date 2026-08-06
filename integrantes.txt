@@ -25,7 +25,7 @@ INTEGRANTES DO GRUPO:
 
 ===================================================================
 LINK DO REPOSITÓRIO GITHUB:
-https://github.com/Gabriel-Maciel06/CP4-Java.git
+https://github.com/Gabriel-Maciel06/CpJava4.git
 
 LINK DE DEPLOY DA API:
 http://40.87.31.123:8082/swagger-ui.html

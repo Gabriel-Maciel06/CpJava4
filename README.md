@@ -16,7 +16,7 @@
 | **Thomas Fontes** | **RM562254** |
 | **Matheus Pereira Molina** | **RM563399** |
 
-* **Repositório GitHub:** [https://github.com/Gabriel-Maciel06/CP4-Java.git](https://github.com/Gabriel-Maciel06/CP4-Java.git)
+* **Repositório GitHub:** [https://github.com/Gabriel-Maciel06/CpJava4.git](https://github.com/Gabriel-Maciel06/CpJava4.git)
 * **Link de Deploy da API:** [http://40.87.31.123:8082/swagger-ui.html](http://40.87.31.123:8082/swagger-ui.html)
 
 ---
@@ -350,8 +350,8 @@ Remove um registro do banco pelo ID.
 ### Passos:
 1. Clone este repositório:
    ```bash
-   git clone https://github.com/Gabriel-Maciel06/CP4-Java.git
-   cd CP4-Java/mercado-express-api
+   git clone https://github.com/Gabriel-Maciel06/CpJava4.git
+   cd CpJava4/mercado-express-api
    ```
 2. Compile e execute a aplicação:
    ```bash
