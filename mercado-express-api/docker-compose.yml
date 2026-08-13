@@ -8,5 +8,5 @@ services:
       - "8082:8082"
     environment:
       - SERVER_PORT=8082
-      - SPRING_PROFILES_ACTIVE=prod
+      - SPRING_PROFILES_ACTIVE=oracle
     restart: always

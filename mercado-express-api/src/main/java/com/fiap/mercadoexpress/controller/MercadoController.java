@@ -1,5 +1,6 @@
 package com.fiap.mercadoexpress.controller;
 
+import com.fiap.mercadoexpress.assembler.MercadoModelAssembler;
 import com.fiap.mercadoexpress.dto.MercadoPatchDto;
 import com.fiap.mercadoexpress.dto.MercadoRequestDto;
 import com.fiap.mercadoexpress.dto.MercadoResponseDto;
@@ -24,10 +25,6 @@ import java.net.URI;
 public class MercadoController {
 
     private final MercadoService service;
-
-    public MercadoController(MercadoService service) {
-        this.service = service;
-    }
 
     @GetMapping
     @Operation(summary = "Listar todos os produtos", description = "Retorna a lista completa de produtos cadastrados no Mercado Express com suporte a HATEOAS e filtro opcional por tipo.")

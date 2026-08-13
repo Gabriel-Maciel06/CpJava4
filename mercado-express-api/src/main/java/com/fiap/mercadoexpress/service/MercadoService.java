@@ -1,5 +1,6 @@
 package com.fiap.mercadoexpress.service;
 
+import com.fiap.mercadoexpress.assembler.MercadoModelAssembler;
 import com.fiap.mercadoexpress.controller.MercadoController;
 import com.fiap.mercadoexpress.dto.MercadoPatchDto;
 import com.fiap.mercadoexpress.dto.MercadoRequestDto;
@@ -9,7 +10,6 @@ import com.fiap.mercadoexpress.model.Mercado;
 import com.fiap.mercadoexpress.repository.MercadoRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.hateoas.CollectionModel;
-import org.springframework.hateoas.Link;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -23,10 +23,7 @@ import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 public class MercadoService {
 
     private final MercadoRepository repository;
-
-    public MercadoService(MercadoRepository repository) {
-        this.repository = repository;
-    }
+    private final MercadoModelAssembler assembler;
 
     @Transactional(readOnly = true)
     public CollectionModel<MercadoResponseDto> findAll(String tipo) {
@@ -35,18 +32,18 @@ public class MercadoService {
                 : repository.findAll();
 
         List<MercadoResponseDto> dtos = lista.stream()
-                .map(this::convertToDto)
+                .map(assembler::toModel)
                 .toList();
 
-        Link selfLink = linkTo(methodOn(MercadoController.class).findAll(tipo)).withSelfRel();
-        return CollectionModel.of(dtos, selfLink);
+        return CollectionModel.of(dtos,
+                linkTo(methodOn(MercadoController.class).findAll(tipo)).withSelfRel());
     }
 
     @Transactional(readOnly = true)
     public MercadoResponseDto findById(Long id) {
         Mercado mercado = repository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Produto não encontrado com o ID: " + id));
-        return convertToDto(mercado);
+        return assembler.toModel(mercado);
     }
 
     @Transactional
@@ -60,7 +57,7 @@ public class MercadoService {
                 .build();
 
         Mercado salvo = repository.save(mercado);
-        return convertToDto(salvo);
+        return assembler.toModel(salvo);
     }
 
     @Transactional
@@ -75,7 +72,7 @@ public class MercadoService {
         mercado.setPreco(dto.getPreco());
 
         Mercado atualizado = repository.save(mercado);
-        return convertToDto(atualizado);
+        return assembler.toModel(atualizado);
     }
 
     @Transactional
@@ -100,7 +97,7 @@ public class MercadoService {
         }
 
         Mercado atualizado = repository.save(mercado);
-        return convertToDto(atualizado);
+        return assembler.toModel(atualizado);
     }
 
     @Transactional
@@ -108,25 +105,5 @@ public class MercadoService {
         Mercado mercado = repository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Produto não encontrado para exclusão com ID: " + id));
         repository.delete(mercado);
-    }
-
-    private MercadoResponseDto convertToDto(Mercado mercado) {
-        MercadoResponseDto dto = MercadoResponseDto.builder()
-                .id(mercado.getId())
-                .nome(mercado.getNome())
-                .tipo(mercado.getTipo())
-                .setor(mercado.getSetor())
-                .tamanho(mercado.getTamanho())
-                .preco(mercado.getPreco())
-                .build();
-
-        // Adiciona links HATEOAS (Maturidade Nível 3 de Richardson)
-        dto.add(linkTo(methodOn(MercadoController.class).findById(mercado.getId())).withSelfRel());
-        dto.add(linkTo(methodOn(MercadoController.class).findAll(null)).withRel("todos-produtos"));
-        dto.add(linkTo(methodOn(MercadoController.class).update(mercado.getId(), null)).withRel("atualizar"));
-        dto.add(linkTo(methodOn(MercadoController.class).patch(mercado.getId(), null)).withRel("atualizar-parcial"));
-        dto.add(linkTo(methodOn(MercadoController.class).delete(mercado.getId())).withRel("deletar"));
-
-        return dto;
     }
 }
