@@ -25,7 +25,20 @@
 
 O **Mercado Express API** foi desenvolvido para atender às demandas de redes de mercados express de conveniência (venda de produtos de limpeza, hortifruti, vestuário/bazar, brinquedos, higiene e alimentos). 
 
-A aplicação oferece um conjunto completo de endpoints **CRUD** (Create, Read, Update, Delete), implementando o **Nível 3 do Modelo de Maturidade de Richardson (HATEOAS)**, permitindo que clientes da API naveguem dinamicamente pelos recursos por meio de hipermídias (`_links`).
+A aplicação oferece um conjunto completo de endpoints **CRUD** (Create, Read, Update, Delete), implementando o **Nível 3 do Modelo de Maturidade de Richardson (HATEOAS)** com `RepresentationModelAssemblerSupport` (`MercadoModelAssembler`), permitindo que clientes da API naveguem dinamicamente pelos recursos por meio de hipermídias (`_links`).
+
+---
+
+## 📸 Evidências e Screenshots de Execução (Swagger UI & REST API)
+
+### 1️⃣ Cadastro de Produto (`POST /mercado` — Status 201 Created & Header Location)
+![POST Mercado 201 Created](docs/images/swagger_post_201.png)
+
+### 2️⃣ Retorno do JSON com Links HATEOAS (Maturidade Nível 3 de Richardson)
+![GET Mercado HATEOAS Response](docs/images/swagger_get_hateoas.png)
+
+### 3️⃣ Exclusão de Produto por ID (`DELETE /mercado/{id}` — Status 204 No Content)
+![DELETE Mercado 204 No Content](docs/images/swagger_delete_204.png)
 
 ---
 
@@ -33,9 +46,9 @@ A aplicação oferece um conjunto completo de endpoints **CRUD** (Create, Read, 
 
 - **Java 21 LTS** — Recursos modernos da linguagem.
 - **Spring Boot 3.3.4 (Maven)** — Framework base para rápida configuração de microsserviços.
-- **Spring HATEOAS** — Adição de navegação hipermídia aos recursos RESTful.
+- **Spring HATEOAS** — Adição de navegação hipermídia com `RepresentationModelAssemblerSupport`.
 - **Spring Data JPA & Hibernate** — Abstração e ORM para manipulação do banco de dados Oracle.
-- **Lombok** — Produtividade com anotações (`@Getter`, `@Setter`, `@NoArgsConstructor`, `@AllArgsConstructor`, `@Builder`).
+- **Lombok 1.18.46** — Produtividade com anotações (`@Getter`, `@Setter`, `@NoArgsConstructor`, `@AllArgsConstructor`, `@Builder`).
 - **Spring Validation (Jakarta Validation)** — Validação declarativa de entrada de dados (`@NotBlank`, `@NotNull`, `@Positive`).
 - **Oracle JDBC Driver (OJDBC11) / H2 Database** — Suporte ao banco Oracle FIAP com fallback transparente H2 em memória.
 - **OpenAPI 3 / Swagger UI** — Documentação e testes interativos no navegador (`http://localhost:8082/swagger-ui.html`).
@@ -62,9 +75,9 @@ CREATE TABLE TDS_TB_MERCADO (
 ### Mapeamento dos Atributos
 - **Id (`ID`)**: Identificador único numérico de incremento automático via `SQ_TDS_MERCADO`.
 - **Nome (`NOME`)**: Descrição/nome comercial do produto (ex: Detergente Líquido 500ml).
-- **Tipo (`TIPO`)**: Categoria do item (ex: Limpeza, Alimentos, Vestuário, Brinquedos).
+- **Tipo (`TIPO`)**: Categoria do item (ex: Limpeza, Alimentos, Hortifruti, Brinquedos).
 - **Setor (`SETOR`)**: Seção do mercado (ex: Higiene e Limpeza, Hortifruti, Bazar, Infantil).
-- **Tamanho (`TAMANHO`)**: Especificação de porte/conteúdo (ex: 500ml, 1kg, M, 30cm, Único).
+- **Tamanho (`TAMANHO`)**: Especificação de porte/conteúdo (ex: 500ml, 1kg, Grande, Único).
 - **Preço (`PRECO`)**: Valor unitário em reais (`BigDecimal`).
 
 ---
@@ -88,52 +101,27 @@ Retorna todos os produtos cadastrados com links HATEOAS.
   "_embedded": {
     "produtos": [
       {
-        "id": 1,
-        "nome": "Detergente Liquido Neutro 500ml",
-        "tipo": "Limpeza",
-        "setor": "Higiene e Limpeza",
-        "tamanho": "500ml",
-        "preco": 3.49,
+        "id": 3,
+        "nome": "LARANJA",
+        "tipo": "FRUTA",
+        "setor": "HORTIFRUTI",
+        "tamanho": "GRANDE",
+        "preco": 10.0,
         "_links": {
           "self": {
-            "href": "http://localhost:8082/mercado/1"
+            "href": "http://localhost:8082/mercado/3"
           },
           "todos-produtos": {
             "href": "http://localhost:8082/mercado"
           },
           "atualizar": {
-            "href": "http://localhost:8082/mercado/1"
+            "href": "http://localhost:8082/mercado/3"
           },
           "atualizar-parcial": {
-            "href": "http://localhost:8082/mercado/1"
+            "href": "http://localhost:8082/mercado/3"
           },
           "deletar": {
-            "href": "http://localhost:8082/mercado/1"
-          }
-        }
-      },
-      {
-        "id": 2,
-        "nome": "Meia Esportiva Algodão Kit c/ 3",
-        "tipo": "Vestuário",
-        "setor": "Bazar",
-        "tamanho": "G (39-43)",
-        "preco": 24.90,
-        "_links": {
-          "self": {
-            "href": "http://localhost:8082/mercado/2"
-          },
-          "todos-produtos": {
-            "href": "http://localhost:8082/mercado"
-          },
-          "atualizar": {
-            "href": "http://localhost:8082/mercado/2"
-          },
-          "atualizar-parcial": {
-            "href": "http://localhost:8082/mercado/2"
-          },
-          "deletar": {
-            "href": "http://localhost:8082/mercado/2"
+            "href": "http://localhost:8082/mercado/3"
           }
         }
       }
@@ -153,32 +141,32 @@ Retorna todos os produtos cadastrados com links HATEOAS.
 Retorna os detalhes de um produto específico.
 
 **Requisição:**
-`GET http://localhost:8082/mercado/1`
+`GET http://localhost:8082/mercado/3`
 
 **Resposta (`200 OK`):**
 ```json
 {
-  "id": 1,
-  "nome": "Detergente Liquido Neutro 500ml",
-  "tipo": "Limpeza",
-  "setor": "Higiene e Limpeza",
-  "tamanho": "500ml",
-  "preco": 3.49,
+  "id": 3,
+  "nome": "LARANJA",
+  "tipo": "FRUTA",
+  "setor": "HORTIFRUTI",
+  "tamanho": "GRANDE",
+  "preco": 10.0,
   "_links": {
     "self": {
-      "href": "http://localhost:8082/mercado/1"
+      "href": "http://localhost:8082/mercado/3"
     },
     "todos-produtos": {
       "href": "http://localhost:8082/mercado"
     },
     "atualizar": {
-      "href": "http://localhost:8082/mercado/1"
+      "href": "http://localhost:8082/mercado/3"
     },
     "atualizar-parcial": {
-      "href": "http://localhost:8082/mercado/1"
+      "href": "http://localhost:8082/mercado/3"
     },
     "deletar": {
-      "href": "http://localhost:8082/mercado/1"
+      "href": "http://localhost:8082/mercado/3"
     }
   }
 }
@@ -196,39 +184,39 @@ Cadastra um novo produto no banco de dados.
 **JSON de Entrada:**
 ```json
 {
-  "nome": "Carrinho Controle Remoto Turbo",
-  "tipo": "Brinquedos",
-  "setor": "Infantil",
-  "tamanho": "Único",
-  "preco": 79.90
+  "nome": "LARANJA",
+  "tipo": "FRUTA",
+  "setor": "HORTIFRUTI",
+  "tamanho": "GRANDE",
+  "preco": 10.0
 }
 ```
 
 **Resposta (`201 Created`):**
-*Header Location:* `http://localhost:8082/mercado/4`
+*Header Location:* `http://localhost:8082/mercado/3`
 ```json
 {
-  "id": 4,
-  "nome": "Carrinho Controle Remoto Turbo",
-  "tipo": "Brinquedos",
-  "setor": "Infantil",
-  "tamanho": "Único",
-  "preco": 79.90,
+  "id": 3,
+  "nome": "LARANJA",
+  "tipo": "FRUTA",
+  "setor": "HORTIFRUTI",
+  "tamanho": "GRANDE",
+  "preco": 10.0,
   "_links": {
     "self": {
-      "href": "http://localhost:8082/mercado/4"
+      "href": "http://localhost:8082/mercado/3"
     },
     "todos-produtos": {
       "href": "http://localhost:8082/mercado"
     },
     "atualizar": {
-      "href": "http://localhost:8082/mercado/4"
+      "href": "http://localhost:8082/mercado/3"
     },
     "atualizar-parcial": {
-      "href": "http://localhost:8082/mercado/4"
+      "href": "http://localhost:8082/mercado/3"
     },
     "deletar": {
-      "href": "http://localhost:8082/mercado/4"
+      "href": "http://localhost:8082/mercado/3"
     }
   }
 }
@@ -240,46 +228,17 @@ Cadastra um novo produto no banco de dados.
 Substitui todas as informações de um produto existente.
 
 **Requisição:**
-`PUT http://localhost:8082/mercado/1`  
+`PUT http://localhost:8082/mercado/3`  
 *Header:* `Content-Type: application/json`
 
 **JSON de Entrada:**
 ```json
 {
-  "nome": "Detergente Líquido Neutro Concentrado 500ml",
-  "tipo": "Limpeza",
-  "setor": "Higiene e Limpeza",
-  "tamanho": "500ml",
-  "preco": 4.19
-}
-```
-
-**Resposta (`200 OK`):**
-```json
-{
-  "id": 1,
-  "nome": "Detergente Líquido Neutro Concentrado 500ml",
-  "tipo": "Limpeza",
-  "setor": "Higiene e Limpeza",
-  "tamanho": "500ml",
-  "preco": 4.19,
-  "_links": {
-    "self": {
-      "href": "http://localhost:8082/mercado/1"
-    },
-    "todos-produtos": {
-      "href": "http://localhost:8082/mercado"
-    },
-    "atualizar": {
-      "href": "http://localhost:8082/mercado/1"
-    },
-    "atualizar-parcial": {
-      "href": "http://localhost:8082/mercado/1"
-    },
-    "deletar": {
-      "href": "http://localhost:8082/mercado/1"
-    }
-  }
+  "nome": "LARANJA SELECIONADA",
+  "tipo": "FRUTA",
+  "setor": "HORTIFRUTI",
+  "tamanho": "GRANDE",
+  "preco": 12.50
 }
 ```
 
@@ -289,42 +248,13 @@ Substitui todas as informações de um produto existente.
 Altera pontualmente um ou mais atributos de um produto (ex: reajuste de preço).
 
 **Requisição:**
-`PATCH http://localhost:8082/mercado/1`  
+`PATCH http://localhost:8082/mercado/3`  
 *Header:* `Content-Type: application/json`
 
 **JSON de Entrada:**
 ```json
 {
-  "preco": 3.89
-}
-```
-
-**Resposta (`200 OK`):**
-```json
-{
-  "id": 1,
-  "nome": "Detergente Líquido Neutro Concentrado 500ml",
-  "tipo": "Limpeza",
-  "setor": "Higiene e Limpeza",
-  "tamanho": "500ml",
-  "preco": 3.89,
-  "_links": {
-    "self": {
-      "href": "http://localhost:8082/mercado/1"
-    },
-    "todos-produtos": {
-      "href": "http://localhost:8082/mercado"
-    },
-    "atualizar": {
-      "href": "http://localhost:8082/mercado/1"
-    },
-    "atualizar-parcial": {
-      "href": "http://localhost:8082/mercado/1"
-    },
-    "deletar": {
-      "href": "http://localhost:8082/mercado/1"
-    }
-  }
+  "preco": 11.90
 }
 ```
 
@@ -334,7 +264,7 @@ Altera pontualmente um ou mais atributos de um produto (ex: reajuste de preço).
 Remove um registro do banco pelo ID.
 
 **Requisição:**
-`DELETE http://localhost:8082/mercado/1`
+`DELETE http://localhost:8082/mercado/3`
 
 **Resposta (`204 No Content`):**
 *(Corpo vazio)*
