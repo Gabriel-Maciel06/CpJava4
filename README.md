@@ -17,7 +17,7 @@
 | **Matheus Pereira Molina** | **RM563399** |
 
 * **Repositório GitHub:** [https://github.com/Gabriel-Maciel06/CpJava4.git](https://github.com/Gabriel-Maciel06/CpJava4.git)
-* **Link de Deploy da API:** [http://40.87.31.123:8082/swagger-ui.html](http://40.87.31.123:8082/swagger-ui.html)
+* **Link de Deploy da API (Azure VM):** [http://57.156.33.102:8082/swagger-ui.html](http://57.156.33.102:8082/swagger-ui.html)
 
 ---
 
@@ -51,7 +51,7 @@ A aplicação oferece um conjunto completo de endpoints **CRUD** (Create, Read, 
 - **Lombok 1.18.46** — Produtividade com anotações (`@Getter`, `@Setter`, `@NoArgsConstructor`, `@AllArgsConstructor`, `@Builder`).
 - **Spring Validation (Jakarta Validation)** — Validação declarativa de entrada de dados (`@NotBlank`, `@NotNull`, `@Positive`).
 - **Oracle JDBC Driver (OJDBC11) / H2 Database** — Suporte ao banco Oracle FIAP com fallback transparente H2 em memória.
-- **OpenAPI 3 / Swagger UI** — Documentação e testes interativos no navegador (`http://localhost:8082/swagger-ui.html`).
+- **OpenAPI 3 / Swagger UI** — Documentação e testes interativos no navegador (`http://57.156.33.102:8082/swagger-ui.html`).
 - **Docker & Docker Compose** — Conteinerização para deploy em nuvem na VM Azure.
 
 ---
@@ -84,6 +84,7 @@ CREATE TABLE TDS_TB_MERCADO (
 
 ## 📡 Endpoints da API e Exemplos do CRUD
 
+> **Servidor em Produção (Azure VM):** `http://57.156.33.102:8082`  
 > **Servidor Local:** `http://localhost:8082`  
 > **Porta Obrigatória:** `8082`
 
@@ -93,7 +94,7 @@ CREATE TABLE TDS_TB_MERCADO (
 Retorna todos os produtos cadastrados com links HATEOAS.
 
 **Requisição:**
-`GET http://localhost:8082/mercado`
+`GET http://57.156.33.102:8082/mercado`
 
 **Resposta (`200 OK`):**
 ```json
@@ -101,7 +102,7 @@ Retorna todos os produtos cadastrados com links HATEOAS.
   "_embedded": {
     "produtos": [
       {
-        "id": 3,
+        "id": 1,
         "nome": "LARANJA",
         "tipo": "FRUTA",
         "setor": "HORTIFRUTI",
@@ -109,19 +110,19 @@ Retorna todos os produtos cadastrados com links HATEOAS.
         "preco": 10.0,
         "_links": {
           "self": {
-            "href": "http://localhost:8082/mercado/3"
+            "href": "http://57.156.33.102:8082/mercado/1"
           },
           "todos-produtos": {
-            "href": "http://localhost:8082/mercado"
+            "href": "http://57.156.33.102:8082/mercado"
           },
           "atualizar": {
-            "href": "http://localhost:8082/mercado/3"
+            "href": "http://57.156.33.102:8082/mercado/1"
           },
           "atualizar-parcial": {
-            "href": "http://localhost:8082/mercado/3"
+            "href": "http://57.156.33.102:8082/mercado/1"
           },
           "deletar": {
-            "href": "http://localhost:8082/mercado/3"
+            "href": "http://57.156.33.102:8082/mercado/1"
           }
         }
       }
@@ -129,7 +130,7 @@ Retorna todos os produtos cadastrados com links HATEOAS.
   },
   "_links": {
     "self": {
-      "href": "http://localhost:8082/mercado"
+      "href": "http://57.156.33.102:8082/mercado"
     }
   }
 }
@@ -141,12 +142,12 @@ Retorna todos os produtos cadastrados com links HATEOAS.
 Retorna os detalhes de um produto específico.
 
 **Requisição:**
-`GET http://localhost:8082/mercado/3`
+`GET http://57.156.33.102:8082/mercado/1`
 
 **Resposta (`200 OK`):**
 ```json
 {
-  "id": 3,
+  "id": 1,
   "nome": "LARANJA",
   "tipo": "FRUTA",
   "setor": "HORTIFRUTI",
@@ -154,19 +155,19 @@ Retorna os detalhes de um produto específico.
   "preco": 10.0,
   "_links": {
     "self": {
-      "href": "http://localhost:8082/mercado/3"
+      "href": "http://57.156.33.102:8082/mercado/1"
     },
     "todos-produtos": {
-      "href": "http://localhost:8082/mercado"
+      "href": "http://57.156.33.102:8082/mercado"
     },
     "atualizar": {
-      "href": "http://localhost:8082/mercado/3"
+      "href": "http://57.156.33.102:8082/mercado/1"
     },
     "atualizar-parcial": {
-      "href": "http://localhost:8082/mercado/3"
+      "href": "http://57.156.33.102:8082/mercado/1"
     },
     "deletar": {
-      "href": "http://localhost:8082/mercado/3"
+      "href": "http://57.156.33.102:8082/mercado/1"
     }
   }
 }
@@ -178,7 +179,7 @@ Retorna os detalhes de um produto específico.
 Cadastra um novo produto no banco de dados.
 
 **Requisição:**
-`POST http://localhost:8082/mercado`  
+`POST http://57.156.33.102:8082/mercado`  
 *Header:* `Content-Type: application/json`
 
 **JSON de Entrada:**
@@ -193,10 +194,10 @@ Cadastra um novo produto no banco de dados.
 ```
 
 **Resposta (`201 Created`):**
-*Header Location:* `http://localhost:8082/mercado/3`
+*Header Location:* `http://57.156.33.102:8082/mercado/1`
 ```json
 {
-  "id": 3,
+  "id": 1,
   "nome": "LARANJA",
   "tipo": "FRUTA",
   "setor": "HORTIFRUTI",
@@ -204,19 +205,19 @@ Cadastra um novo produto no banco de dados.
   "preco": 10.0,
   "_links": {
     "self": {
-      "href": "http://localhost:8082/mercado/3"
+      "href": "http://57.156.33.102:8082/mercado/1"
     },
     "todos-produtos": {
-      "href": "http://localhost:8082/mercado"
+      "href": "http://57.156.33.102:8082/mercado"
     },
     "atualizar": {
-      "href": "http://localhost:8082/mercado/3"
+      "href": "http://57.156.33.102:8082/mercado/1"
     },
     "atualizar-parcial": {
-      "href": "http://localhost:8082/mercado/3"
+      "href": "http://57.156.33.102:8082/mercado/1"
     },
     "deletar": {
-      "href": "http://localhost:8082/mercado/3"
+      "href": "http://57.156.33.102:8082/mercado/1"
     }
   }
 }
@@ -228,7 +229,7 @@ Cadastra um novo produto no banco de dados.
 Substitui todas as informações de um produto existente.
 
 **Requisição:**
-`PUT http://localhost:8082/mercado/3`  
+`PUT http://57.156.33.102:8082/mercado/1`  
 *Header:* `Content-Type: application/json`
 
 **JSON de Entrada:**
@@ -248,7 +249,7 @@ Substitui todas as informações de um produto existente.
 Altera pontualmente um ou mais atributos de um produto (ex: reajuste de preço).
 
 **Requisição:**
-`PATCH http://localhost:8082/mercado/3`  
+`PATCH http://57.156.33.102:8082/mercado/1`  
 *Header:* `Content-Type: application/json`
 
 **JSON de Entrada:**
@@ -264,7 +265,7 @@ Altera pontualmente um ou mais atributos de um produto (ex: reajuste de preço).
 Remove um registro do banco pelo ID.
 
 **Requisição:**
-`DELETE http://localhost:8082/mercado/3`
+`DELETE http://57.156.33.102:8082/mercado/1`
 
 **Resposta (`204 No Content`):**
 *(Corpo vazio)*
@@ -297,8 +298,10 @@ Remove um registro do banco pelo ID.
 
 ## ☁️ Deploy e Nuvem
 
-A API foi conteinerizada via **Docker** e está configurada para deploy automatizado em servidor VM Azure.
-- **URL da API em Produção:** `http://40.87.31.123:8082/swagger-ui.html`
+A API foi conteinerizada via **Docker** e implantada na nuvem **Azure Virtual Machine** (`vm-linux-free`).
+- **URL da API em Produção:** `http://57.156.33.102:8082/swagger-ui.html`
+- **IP Público da VM:** `57.156.33.102`
+- **Porta:** `8082`
 
 ---
 

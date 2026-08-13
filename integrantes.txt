@@ -27,6 +27,6 @@ INTEGRANTES DO GRUPO:
 LINK DO REPOSITÓRIO GITHUB:
 https://github.com/Gabriel-Maciel06/CpJava4.git
 
-LINK DE DEPLOY DA API:
-http://40.87.31.123:8082/swagger-ui.html
+LINK DE DEPLOY DA API NA AZURE VM:
+http://57.156.33.102:8082/swagger-ui.html
 ===================================================================
