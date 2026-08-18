@@ -531,10 +531,35 @@
       </div>
     </div>
 
-    <!-- ========== SLIDE 3: FLUXO COMPLETO DA ARQUITETURA ========== -->
+    <!-- ========== SLIDE 3: O QUE É HATEOAS (DEDICADO) ========== -->
     <div class="slide">
       <div class="slide-inner">
-        <div class="section-label">02 // FLUXO DA ARQUITETURA</div>
+        <div class="section-label">02 // CONCEITO CHAVE</div>
+        <h2 class="slide-title">O que é <span class="highlight-gradient">HATEOAS Nível 3</span>?</h2>
+        <div class="cards-grid">
+          <div class="card">
+            <div class="card-icon">🌐</div>
+            <div class="card-title">Nível 3 de Richardson</div>
+            <div class="card-text"><strong>Hypermedia As The Engine Of Application State</strong>. É o nível máximo de maturidade REST, onde a própria API guia o cliente fornecendo hiperlinks navegáveis (<span class="inline-code">_links</span>).</div>
+          </div>
+          <div class="card">
+            <div class="card-icon">🔗</div>
+            <div class="card-title">Navegabilidade Autodocumentada</div>
+            <div class="card-text">Em vez de o cliente hardcodar URLs, o JSON retornado informa exatamente onde acessar (<span class="inline-code">self</span>), consultar todos (<span class="inline-code">todos-produtos</span>), atualizar (<span class="inline-code">atualizar</span>) e excluir (<span class="inline-code">deletar</span>).</div>
+          </div>
+          <div class="card">
+            <div class="card-icon">⚙️</div>
+            <div class="card-title">Padrão Assembler Limpo</div>
+            <div class="card-text">Usamos <span class="inline-code">MercadoModelAssembler</span> com <span class="inline-code">RepresentationModelAssemblerSupport</span> e reflexão Java (<span class="inline-code">methodOn</span>) para zero acoplamento de Strings.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ========== SLIDE 4: FLUXO COMPLETO DA ARQUITETURA ========== -->
+    <div class="slide">
+      <div class="slide-inner">
+        <div class="section-label">03 // FLUXO DA ARQUITETURA</div>
         <h2 class="slide-title">Jornada de uma Requisição <span class="highlight-gradient">Passo a Passo</span></h2>
         <div class="flow-diagram">
 [ Cliente / Browser / Postman ]
@@ -565,10 +590,10 @@
       </div>
     </div>
 
-    <!-- ========== SLIDE 4: PASSO 1 - REQUISIÇÃO HTTP ========== -->
+    <!-- ========== SLIDE 5: PASSO 1 - REQUISIÇÃO HTTP ========== -->
     <div class="slide">
       <div class="slide-inner">
-        <div class="section-label">03 // CAMADA 1 — REQUISIÇÃO HTTP</div>
+        <div class="section-label">04 // CAMADA 1 — REQUISIÇÃO HTTP</div>
         <div class="flow-step-banner">
           <div class="step-number-badge">1</div>
           <div class="step-banner-info">
@@ -591,10 +616,10 @@
       </div>
     </div>
 
-    <!-- ========== SLIDE 5: PASSO 2 - CONTROLLER ========== -->
+    <!-- ========== SLIDE 6: PASSO 2 - CONTROLLER ========== -->
     <div class="slide">
       <div class="slide-inner">
-        <div class="section-label">04 // CAMADA 2 — REST CONTROLLER</div>
+        <div class="section-label">05 // CAMADA 2 — REST CONTROLLER</div>
         <div class="flow-step-banner">
           <div class="step-number-badge">2</div>
           <div class="step-banner-info">
@@ -620,10 +645,10 @@
       </div>
     </div>
 
-    <!-- ========== SLIDE 6: PASSO 3 - SERVICE ========== -->
+    <!-- ========== SLIDE 7: PASSO 3 - SERVICE ========== -->
     <div class="slide">
       <div class="slide-inner">
-        <div class="section-label">05 // CAMADA 3 — SERVICE & REGRA DE NEGÓCIO</div>
+        <div class="section-label">06 // CAMADA 3 — SERVICE & REGRA DE NEGÓCIO</div>
         <div class="flow-step-banner">
           <div class="step-number-badge">3</div>
           <div class="step-banner-info">
@@ -654,10 +679,10 @@
       </div>
     </div>
 
-    <!-- ========== SLIDE 7: PASSO 4 - REPOSITORY & ORACLE ========== -->
+    <!-- ========== SLIDE 8: PASSO 4 - REPOSITORY & ORACLE ========== -->
     <div class="slide">
       <div class="slide-inner">
-        <div class="section-label">06 // CAMADA 4 — PERSISTÊNCIA & ORACLE DB</div>
+        <div class="section-label">07 // CAMADA 4 — PERSISTÊNCIA & ORACLE DB</div>
         <div class="flow-step-banner">
           <div class="step-number-badge">4</div>
           <div class="step-banner-info">
@@ -673,10 +698,10 @@
       </div>
     </div>
 
-    <!-- ========== SLIDE 8: PASSO 5 - HATEOAS ASSEMBLER ========== -->
+    <!-- ========== SLIDE 9: PASSO 5 - HATEOAS ASSEMBLER ========== -->
     <div class="slide">
       <div class="slide-inner">
-        <div class="section-label">07 // CAMADA 5 — MONTAGEM HATEOAS NÍVEL 3</div>
+        <div class="section-label">08 // CAMADA 5 — MONTAGEM HATEOAS NÍVEL 3</div>
         <div class="flow-step-banner">
           <div class="step-number-badge">5</div>
           <div class="step-banner-info">
@@ -700,10 +725,10 @@
       </div>
     </div>
 
-    <!-- ========== SLIDE 9: PASSO 6 - RESPOSTA HTTP 201 CREATED ========== -->
+    <!-- ========== SLIDE 10: PASSO 6 - RESPOSTA HTTP 201 CREATED ========== -->
     <div class="slide">
       <div class="slide-inner">
-        <div class="section-label">08 // RETORNO FINAL — HTTP 201 CREATED</div>
+        <div class="section-label">09 // RETORNO FINAL — HTTP 201 CREATED</div>
         <div class="flow-step-banner">
           <div class="step-number-badge">6</div>
           <div class="step-banner-info">
@@ -733,10 +758,10 @@
       </div>
     </div>
 
-    <!-- ========== SLIDE 10: INFRAESTRUTURA & AZURE DEPLOY ========== -->
+    <!-- ========== SLIDE 11: INFRAESTRUTURA & AZURE DEPLOY ========== -->
     <div class="slide">
       <div class="slide-inner">
-        <div class="section-label">09 // CLOUD & DEVOPS</div>
+        <div class="section-label">10 // CLOUD & DEVOPS</div>
         <h2 class="slide-title">Infraestrutura Azure & <span class="highlight-azure">Docker Multi-Stage</span></h2>
         <div class="cards-grid">
           <div class="card">
@@ -758,10 +783,10 @@
       </div>
     </div>
 
-    <!-- ========== SLIDE 11: CONCLUSÃO E EVIDÊNCIAS ========== -->
+    <!-- ========== SLIDE 12: CONCLUSÃO E EVIDÊNCIAS ========== -->
     <div class="slide">
       <div class="slide-inner" style="text-align:center">
-        <div class="section-label">10 // CONCLUSÃO</div>
+        <div class="section-label">11 // CONCLUSÃO</div>
         <h2 class="slide-title">Projeto Concluído com <span class="highlight-gradient">100% de Conformidade</span></h2>
         <div class="img-grid" style="margin-bottom:24px">
           <div class="img-card">
@@ -788,7 +813,7 @@
   <!-- Navigation Bar -->
   <div class="nav-bar">
     <div class="nav-dots" id="navDots"></div>
-    <div class="nav-counter" id="navCounter">01 / 11</div>
+    <div class="nav-counter" id="navCounter">01 / 12</div>
     <div class="nav-buttons">
       <button class="nav-btn" id="prevBtn" onclick="changeSlide(-1)">← Anterior</button>
       <button class="nav-btn" id="nextBtn" onclick="changeSlide(1)">Próximo →</button>
