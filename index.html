@@ -204,12 +204,6 @@
       -webkit-text-fill-color: transparent;
     }
 
-    .highlight-purple {
-      background: var(--gradient-purple);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-
     .cards-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -248,17 +242,62 @@
       line-height: 1.6;
     }
 
-    /* Flow Box & Architecture Steps */
-    .flow-diagram {
-      background: var(--bg-code);
+    /* VISUAL ARCHITECTURE PIPELINE (NO ASCII - CLEAN UI) */
+    .pipeline-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-top: 10px;
+    }
+
+    .pipeline-card {
+      background: var(--bg-card);
       border: 1px solid var(--border-subtle);
       border-radius: 14px;
-      padding: 20px;
+      padding: 18px;
+      position: relative;
+      transition: all 0.3s ease;
+    }
+
+    .pipeline-card:hover {
+      border-color: var(--accent-green);
+      box-shadow: 0 0 20px rgba(16, 185, 129, 0.15);
+      transform: translateY(-2px);
+    }
+
+    .pipeline-step-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+
+    .pipeline-step-num {
+      background: rgba(16, 185, 129, 0.2);
+      border: 1px solid rgba(16, 185, 129, 0.4);
+      color: var(--accent-green);
+      font-weight: 800;
+      font-size: 12px;
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
       font-family: 'JetBrains Mono', monospace;
-      font-size: 12.5px;
+    }
+
+    .pipeline-step-title {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--text-primary);
+    }
+
+    .pipeline-step-desc {
+      font-size: 13px;
+      color: var(--text-secondary);
       line-height: 1.5;
-      color: #94a3b8;
-      overflow-x: auto;
     }
 
     .flow-step-banner {
@@ -518,82 +557,80 @@
             <div class="card-text">API completa para redes de mercado express (produtos de limpeza, hortifruti, vestuário, brinquedos e alimentos).</div>
           </div>
           <div class="card">
-            <div class="card-icon">⚡</div>
-            <div class="card-title">Porta 8082 & Lombok</div>
-            <div class="card-text">Execução em <span class="inline-code">server.port=8082</span> e Lombok 1.18.46 nativo no Maven eliminando código boilerplate.</div>
+            <div class="card-icon">🏗️</div>
+            <div class="card-title">Arquitetura em Camadas</div>
+            <div class="card-text">Separação rigorosa de responsabilidades entre Controller, Service, Repository, DTOs e HATEOAS Assembler.</div>
           </div>
           <div class="card">
-            <div class="card-icon">🎯</div>
-            <div class="card-title">Maturidade REST Nível 3</div>
-            <div class="card-text">HATEOAS completo desacoplado via <span class="inline-code">MercadoModelAssembler</span> com navegação hipermídia dinânica.</div>
+            <div class="card-icon">☁️</div>
+            <div class="card-title">Deploy na Nuvem Azure</div>
+            <div class="card-text">Aplicação conteinerizada em produçao na porta 8082 da VM Linux Azure com documentação OpenAPI.</div>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- ========== SLIDE 3: O QUE É HATEOAS (DEDICADO) ========== -->
+    <!-- ========== SLIDE 3: FLUXO COMPLETO DA ARQUITETURA (VISUAL PIPELINE GRID - NO ASCII) ========== -->
     <div class="slide">
       <div class="slide-inner">
-        <div class="section-label">02 // CONCEITO CHAVE</div>
-        <h2 class="slide-title">O que é <span class="highlight-gradient">HATEOAS Nível 3</span>?</h2>
-        <div class="cards-grid">
-          <div class="card">
-            <div class="card-icon">🌐</div>
-            <div class="card-title">Nível 3 de Richardson</div>
-            <div class="card-text"><strong>Hypermedia As The Engine Of Application State</strong>. É o nível máximo de maturidade REST, onde a própria API guia o cliente fornecendo hiperlinks navegáveis (<span class="inline-code">_links</span>).</div>
+        <div class="section-label">02 // ARQUITETURA EM CAMADAS</div>
+        <h2 class="slide-title">Jornada da Requisição <span class="highlight-gradient">Passo a Passo</span></h2>
+        <div class="pipeline-grid">
+          <div class="pipeline-card">
+            <div class="pipeline-step-header">
+              <div class="pipeline-step-num">1</div>
+              <div class="pipeline-step-title">Cliente HTTP</div>
+            </div>
+            <div class="pipeline-step-desc">Envia o JSON da requisição no <span class="inline-code">POST /mercado</span> na porta 8082.</div>
           </div>
-          <div class="card">
-            <div class="card-icon">🔗</div>
-            <div class="card-title">Navegabilidade Autodocumentada</div>
-            <div class="card-text">Em vez de o cliente hardcodar URLs, o JSON retornado informa exatamente onde acessar (<span class="inline-code">self</span>), consultar todos (<span class="inline-code">todos-produtos</span>), atualizar (<span class="inline-code">atualizar</span>) e excluir (<span class="inline-code">deletar</span>).</div>
+
+          <div class="pipeline-card">
+            <div class="pipeline-step-header">
+              <div class="pipeline-step-num">2</div>
+              <div class="pipeline-step-title">Controller</div>
+            </div>
+            <div class="pipeline-step-desc">Valida os dados com <span class="inline-code">@Valid</span> e direciona para a camada de Serviço.</div>
           </div>
-          <div class="card">
-            <div class="card-icon">⚙️</div>
-            <div class="card-title">Padrão Assembler Limpo</div>
-            <div class="card-text">Usamos <span class="inline-code">MercadoModelAssembler</span> com <span class="inline-code">RepresentationModelAssemblerSupport</span> e reflexão Java (<span class="inline-code">methodOn</span>) para zero acoplamento de Strings.</div>
+
+          <div class="pipeline-card">
+            <div class="pipeline-step-header">
+              <div class="pipeline-step-num">3</div>
+              <div class="pipeline-step-title">Service</div>
+            </div>
+            <div class="pipeline-step-desc">Executa a regra de negócio e gerencia a transação com <span class="inline-code">@Transactional</span>.</div>
+          </div>
+
+          <div class="pipeline-card">
+            <div class="pipeline-step-header">
+              <div class="pipeline-step-num">4</div>
+              <div class="pipeline-step-title">Repository</div>
+            </div>
+            <div class="pipeline-step-desc">Manda o <span class="inline-code">INSERT</span> para a tabela Oracle gerando a Primary Key com a Sequence.</div>
+          </div>
+
+          <div class="pipeline-card">
+            <div class="pipeline-step-header">
+              <div class="pipeline-step-num">5</div>
+              <div class="pipeline-step-title">Assembler</div>
+            </div>
+            <div class="pipeline-step-desc">Converte a Entidade JPA salva e injeta a coleção de <span class="inline-code">_links</span> HATEOAS.</div>
+          </div>
+
+          <div class="pipeline-card">
+            <div class="pipeline-step-header">
+              <div class="pipeline-step-num">6</div>
+              <div class="pipeline-step-title">Resposta 201</div>
+            </div>
+            <div class="pipeline-step-desc">Devolve HTTP <span class="inline-code">201 Created</span> com o cabeçalho <span class="inline-code">Location</span> para o cliente.</div>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- ========== SLIDE 4: FLUXO COMPLETO DA ARQUITETURA ========== -->
+    <!-- ========== SLIDE 4: PASSO 1 - REQUISIÇÃO HTTP ========== -->
     <div class="slide">
       <div class="slide-inner">
-        <div class="section-label">03 // FLUXO DA ARQUITETURA</div>
-        <h2 class="slide-title">Jornada de uma Requisição <span class="highlight-gradient">Passo a Passo</span></h2>
-        <div class="flow-diagram">
-[ Cliente / Browser / Postman ]
-               │
-               ▼  (1. HTTP POST /mercado na Porta 8082)
-┌─────────────────────────────────────────────────────────┐
-│ 2. MercadoController (@RestController)                 │  <-- Recebe o JSON, dispara @Valid
-└──────────────────────────┬──────────────────────────────┘
-                           │ 
-                           ▼  (Passa o MercadoRequestDto)
-┌─────────────────────────────────────────────────────────┐
-│ 3. MercadoService (@Service)                            │  <-- Regras de Negócio & @Transactional
-└──────────────────────────┬──────────────────────────────┘
-                           │ 
-                           ▼  (Converte DTO -> Entity Mercado)
-┌─────────────────────────────────────────────────────────┐
-│ 4. MercadoRepository (Spring Data JPA)                   │  <-- Executa SQL na tabela Oracle
-└──────────────────────────┬──────────────────────────────┘
-                           │ 
-                           ▼  (Retorna a Entidade com ID gerado pela Sequence)
-┌─────────────────────────────────────────────────────────┐
-│ 5. MercadoModelAssembler (Spring HATEOAS)               │  <-- Injeta a coleção de _links HATEOAS
-└──────────────────────────┬──────────────────────────────┘
-                           │ 
-                           ▼  (Retorna MercadoResponseDto com _links)
-[ 6. Resposta HTTP 201 Created + Header Location ]
-        </div>
-      </div>
-    </div>
-
-    <!-- ========== SLIDE 5: PASSO 1 - REQUISIÇÃO HTTP ========== -->
-    <div class="slide">
-      <div class="slide-inner">
-        <div class="section-label">04 // CAMADA 1 — REQUISIÇÃO HTTP</div>
+        <div class="section-label">03 // CAMADA 1 — REQUISIÇÃO HTTP</div>
         <div class="flow-step-banner">
           <div class="step-number-badge">1</div>
           <div class="step-banner-info">
@@ -616,10 +653,10 @@
       </div>
     </div>
 
-    <!-- ========== SLIDE 6: PASSO 2 - CONTROLLER ========== -->
+    <!-- ========== SLIDE 5: PASSO 2 - CONTROLLER ========== -->
     <div class="slide">
       <div class="slide-inner">
-        <div class="section-label">05 // CAMADA 2 — REST CONTROLLER</div>
+        <div class="section-label">04 // CAMADA 2 — REST CONTROLLER</div>
         <div class="flow-step-banner">
           <div class="step-number-badge">2</div>
           <div class="step-banner-info">
@@ -645,10 +682,10 @@
       </div>
     </div>
 
-    <!-- ========== SLIDE 7: PASSO 3 - SERVICE ========== -->
+    <!-- ========== SLIDE 6: PASSO 3 - SERVICE ========== -->
     <div class="slide">
       <div class="slide-inner">
-        <div class="section-label">06 // CAMADA 3 — SERVICE & REGRA DE NEGÓCIO</div>
+        <div class="section-label">05 // CAMADA 3 — SERVICE & REGRA DE NEGÓCIO</div>
         <div class="flow-step-banner">
           <div class="step-number-badge">3</div>
           <div class="step-banner-info">
@@ -679,10 +716,10 @@
       </div>
     </div>
 
-    <!-- ========== SLIDE 8: PASSO 4 - REPOSITORY & ORACLE ========== -->
+    <!-- ========== SLIDE 7: PASSO 4 - REPOSITORY & ORACLE ========== -->
     <div class="slide">
       <div class="slide-inner">
-        <div class="section-label">07 // CAMADA 4 — PERSISTÊNCIA & ORACLE DB</div>
+        <div class="section-label">06 // CAMADA 4 — PERSISTÊNCIA & ORACLE DB</div>
         <div class="flow-step-banner">
           <div class="step-number-badge">4</div>
           <div class="step-banner-info">
@@ -698,14 +735,14 @@
       </div>
     </div>
 
-    <!-- ========== SLIDE 9: PASSO 5 - HATEOAS ASSEMBLER ========== -->
+    <!-- ========== SLIDE 8: PASSO 5 - HATEOAS ASSEMBLER ========== -->
     <div class="slide">
       <div class="slide-inner">
-        <div class="section-label">08 // CAMADA 5 — MONTAGEM HATEOAS NÍVEL 3</div>
+        <div class="section-label">07 // CAMADA 5 — MONTAGEM HATEOAS ASSEMBLER</div>
         <div class="flow-step-banner">
           <div class="step-number-badge">5</div>
           <div class="step-banner-info">
-            <h3>MercadoModelAssembler & Hipermídia (_links)</h3>
+            <h3>MercadoModelAssembler (Injeção dos Links)</h3>
             <p>Converte a entidade salva em MercadoResponseDto injetando a coleção de links navegáveis (_links).</p>
           </div>
         </div>
@@ -721,6 +758,31 @@
 
     <span class="code-keyword">return</span> dto;
 }
+        </div>
+      </div>
+    </div>
+
+    <!-- ========== SLIDE 9: EXPLICATIVO HATEOAS NÍVEL 3 (POSICIONADO APÓS O ASSEMBLER) ========== -->
+    <div class="slide">
+      <div class="slide-inner">
+        <div class="section-label">08 // CONCEITO TÉCNICO</div>
+        <h2 class="slide-title">Conceito: <span class="highlight-gradient">HATEOAS Nível 3 (Richardson)</span></h2>
+        <div class="cards-grid">
+          <div class="card">
+            <div class="card-icon">🌐</div>
+            <div class="card-title">Maturidade REST Nível 3</div>
+            <div class="card-text"><strong>Hypermedia As The Engine Of Application State</strong>. É o nível máximo de maturidade REST, onde a própria API guia o cliente fornecendo hiperlinks navegáveis (<span class="inline-code">_links</span>).</div>
+          </div>
+          <div class="card">
+            <div class="card-icon">🔗</div>
+            <div class="card-title">Navegabilidade Autodocumentada</div>
+            <div class="card-text">Em vez de o cliente hardcodar URLs, o JSON retornado informa exatamente onde acessar (<span class="inline-code">self</span>), consultar todos (<span class="inline-code">todos-produtos</span>), atualizar (<span class="inline-code">atualizar</span>) e excluir (<span class="inline-code">deletar</span>).</div>
+          </div>
+          <div class="card">
+            <div class="card-icon">⚙️</div>
+            <div class="card-title">Reflexão Tipo-Segura</div>
+            <div class="card-text">O método <span class="inline-code">linkTo(methodOn(...))</span> inspeciona as anotações do Controller em tempo de execução, garantindo que se a URL mudar no Controller, os links se atualizam sozinhos.</div>
+          </div>
         </div>
       </div>
     </div>
