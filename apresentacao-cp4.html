@@ -50,10 +50,10 @@
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      padding: 50px 80px;
+      padding: 40px 60px;
       opacity: 0;
       transform: translateX(50px);
-      transition: opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1), transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+      transition: opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1), transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
       pointer-events: none;
       overflow-y: auto;
     }
@@ -72,7 +72,7 @@
     /* ===== COVER SLIDE ===== */
     .slide-cover {
       text-align: center;
-      background: radial-gradient(circle at 50% 30%, rgba(16, 185, 129, 0.1) 0%, transparent 70%),
+      background: radial-gradient(circle at 50% 30%, rgba(16, 185, 129, 0.12) 0%, transparent 70%),
                   radial-gradient(circle at 80% 80%, rgba(59, 130, 246, 0.08) 0%, transparent 50%);
     }
 
@@ -87,35 +87,35 @@
       font-weight: 700;
       letter-spacing: 2px;
       text-transform: uppercase;
-      margin-bottom: 20px;
+      margin-bottom: 16px;
     }
 
     .cover-title {
-      font-size: 54px;
+      font-size: 52px;
       font-weight: 900;
       line-height: 1.1;
       background: var(--gradient-brand);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
-      margin-bottom: 16px;
+      margin-bottom: 14px;
     }
 
     .cover-subtitle {
-      font-size: 20px;
+      font-size: 19px;
       color: var(--text-secondary);
       font-weight: 400;
-      line-height: 1.6;
-      margin-bottom: 36px;
+      line-height: 1.5;
+      margin-bottom: 30px;
     }
 
     .cover-authors {
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
-      gap: 12px 24px;
+      gap: 10px 20px;
       max-width: 900px;
-      margin: 0 auto 30px auto;
-      padding: 20px 28px;
+      margin: 0 auto 24px auto;
+      padding: 16px 24px;
       background: rgba(255, 255, 255, 0.03);
       border: 1px solid var(--border-subtle);
       border-radius: 16px;
@@ -123,7 +123,7 @@
     }
 
     .cover-author {
-      font-size: 14px;
+      font-size: 13.5px;
       color: var(--text-muted);
       font-weight: 500;
     }
@@ -182,14 +182,14 @@
       letter-spacing: 3px;
       text-transform: uppercase;
       color: var(--accent-green);
-      margin-bottom: 8px;
+      margin-bottom: 6px;
     }
 
     .slide-title {
-      font-size: 34px;
+      font-size: 32px;
       font-weight: 800;
       line-height: 1.2;
-      margin-bottom: 24px;
+      margin-bottom: 20px;
     }
 
     .highlight-gradient {
@@ -204,42 +204,97 @@
       -webkit-text-fill-color: transparent;
     }
 
+    .highlight-purple {
+      background: var(--gradient-purple);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
     .cards-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 20px;
+      gap: 16px;
     }
 
     .card {
       background: var(--bg-card);
       border: 1px solid var(--border-subtle);
-      border-radius: 16px;
-      padding: 24px;
+      border-radius: 14px;
+      padding: 20px;
       transition: all 0.3s ease;
     }
 
     .card:hover {
       border-color: rgba(16, 185, 129, 0.3);
-      transform: translateY(-4px);
+      transform: translateY(-3px);
       box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
     }
 
     .card-icon {
-      font-size: 32px;
-      margin-bottom: 12px;
+      font-size: 28px;
+      margin-bottom: 10px;
     }
 
     .card-title {
-      font-size: 18px;
+      font-size: 17px;
       font-weight: 700;
-      margin-bottom: 8px;
+      margin-bottom: 6px;
       color: var(--text-primary);
     }
 
     .card-text {
-      font-size: 14px;
+      font-size: 13.5px;
       color: var(--text-secondary);
       line-height: 1.6;
+    }
+
+    /* Flow Box & Architecture Steps */
+    .flow-diagram {
+      background: var(--bg-code);
+      border: 1px solid var(--border-subtle);
+      border-radius: 14px;
+      padding: 20px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12.5px;
+      line-height: 1.5;
+      color: #94a3b8;
+      overflow-x: auto;
+    }
+
+    .flow-step-banner {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      background: rgba(16, 185, 129, 0.08);
+      border: 1px solid rgba(16, 185, 129, 0.25);
+      border-radius: 12px;
+      padding: 14px 20px;
+      margin-bottom: 20px;
+    }
+
+    .step-number-badge {
+      background: var(--accent-green);
+      color: #050811;
+      font-weight: 900;
+      font-size: 16px;
+      width: 38px;
+      height: 38px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .step-banner-info h3 {
+      font-size: 16px;
+      font-weight: 800;
+      color: var(--text-primary);
+    }
+
+    .step-banner-info p {
+      font-size: 13px;
+      color: var(--text-secondary);
     }
 
     /* Code Blocks */
@@ -247,34 +302,36 @@
       background: var(--bg-code);
       border: 1px solid var(--border-subtle);
       border-radius: 12px;
-      padding: 20px;
+      padding: 18px;
       font-family: 'JetBrains Mono', monospace;
-      font-size: 13px;
+      font-size: 12.5px;
       color: #94a3b8;
       overflow-x: auto;
-      line-height: 1.6;
+      line-height: 1.5;
     }
 
     .code-keyword { color: #f43f5e; font-weight: 600; }
     .code-string { color: #10b981; }
     .code-number { color: #f59e0b; }
     .code-property { color: #38bdf8; }
+    .code-comment { color: #64748b; font-style: italic; }
+    .code-annotation { color: #c084fc; font-weight: 600; }
 
     /* Tables */
     .tech-table {
       width: 100%;
       border-collapse: collapse;
       background: var(--bg-card);
-      border-radius: 16px;
+      border-radius: 14px;
       overflow: hidden;
       border: 1px solid var(--border-subtle);
     }
 
     .tech-table th, .tech-table td {
-      padding: 16px 20px;
+      padding: 14px 18px;
       text-align: left;
       border-bottom: 1px solid var(--border-subtle);
-      font-size: 14px;
+      font-size: 13.5px;
     }
 
     .tech-table th {
@@ -282,7 +339,7 @@
       color: var(--accent-green);
       font-weight: 700;
       text-transform: uppercase;
-      font-size: 12px;
+      font-size: 11px;
       letter-spacing: 1px;
     }
 
@@ -303,7 +360,7 @@
     /* Images grid */
     .img-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
       gap: 16px;
     }
 
@@ -316,14 +373,14 @@
 
     .img-card img {
       width: 100%;
-      height: 180px;
+      height: 160px;
       object-fit: cover;
       border-bottom: 1px solid var(--border-subtle);
     }
 
     .img-caption {
-      padding: 12px 16px;
-      font-size: 13px;
+      padding: 10px 14px;
+      font-size: 12.5px;
       font-weight: 600;
       color: var(--text-secondary);
     }
@@ -331,15 +388,15 @@
     /* Navigation Bar */
     .nav-bar {
       position: absolute;
-      bottom: 24px;
+      bottom: 20px;
       left: 50%;
       transform: translateX(-50%);
       display: flex;
       align-items: center;
-      gap: 24px;
-      background: rgba(12, 17, 34, 0.85);
+      gap: 20px;
+      background: rgba(12, 17, 34, 0.88);
       border: 1px solid var(--border-subtle);
-      padding: 10px 24px;
+      padding: 8px 20px;
       border-radius: 50px;
       backdrop-filter: blur(16px);
       box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
@@ -348,12 +405,12 @@
 
     .nav-dots {
       display: flex;
-      gap: 8px;
+      gap: 6px;
     }
 
     .nav-dot {
-      width: 10px;
-      height: 10px;
+      width: 8px;
+      height: 8px;
       border-radius: 50%;
       background: rgba(255, 255, 255, 0.2);
       cursor: pointer;
@@ -362,12 +419,12 @@
 
     .nav-dot.active {
       background: var(--accent-green);
-      width: 28px;
+      width: 24px;
       border-radius: 10px;
     }
 
     .nav-counter {
-      font-size: 13px;
+      font-size: 12px;
       font-weight: 700;
       color: var(--text-muted);
       font-family: 'JetBrains Mono', monospace;
@@ -377,9 +434,9 @@
       background: rgba(255, 255, 255, 0.06);
       border: 1px solid var(--border-subtle);
       color: var(--text-primary);
-      padding: 6px 16px;
+      padding: 5px 14px;
       border-radius: 20px;
-      font-size: 13px;
+      font-size: 12px;
       font-weight: 600;
       cursor: pointer;
       transition: all 0.2s ease;
@@ -393,18 +450,27 @@
 
     .kbd-hint {
       position: absolute;
-      bottom: 28px;
-      right: 32px;
-      font-size: 12px;
+      bottom: 24px;
+      right: 28px;
+      font-size: 11px;
       color: var(--text-muted);
     }
 
     kbd {
       background: rgba(255, 255, 255, 0.1);
-      padding: 2px 6px;
+      padding: 2px 5px;
       border-radius: 4px;
       border: 1px solid var(--border-subtle);
       font-family: monospace;
+    }
+
+    .inline-code {
+      background: rgba(255, 255, 255, 0.08);
+      color: var(--accent-teal);
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
     }
   </style>
 </head>
@@ -449,197 +515,255 @@
           <div class="card">
             <div class="card-icon">🛒</div>
             <div class="card-title">Domínio de Negócio</div>
-            <div class="card-text">API completa de gestão de estoque para redes de mercado express de conveniência (produtos de limpeza, hortifruti, vestuário, brinquedos e alimentos).</div>
+            <div class="card-text">API completa para redes de mercado express (produtos de limpeza, hortifruti, vestuário, brinquedos e alimentos).</div>
           </div>
           <div class="card">
             <div class="card-icon">⚡</div>
-            <div class="card-title">Porta Obrigatória & Servidor</div>
-            <div class="card-text">Servidor web Tomcat configurado na porta <strong>8082</strong> (<span class="inline-code">server.port=8082</span>) atendendo todas as chamadas HTTP.</div>
+            <div class="card-title">Porta 8082 & Lombok</div>
+            <div class="card-text">Execução em <span class="inline-code">server.port=8082</span> e Lombok 1.18.46 nativo no Maven eliminando código boilerplate.</div>
           </div>
           <div class="card">
             <div class="card-icon">🎯</div>
-            <div class="card-title">Operações CRUD Completas</div>
-            <div class="card-text">Endpoints em <span class="inline-code">/mercado</span> contemplando todas as operações: Create (POST), Read (GET), Update (PUT/PATCH) e Delete (DELETE).</div>
+            <div class="card-title">Maturidade REST Nível 3</div>
+            <div class="card-text">HATEOAS completo desacoplado via <span class="inline-code">MercadoModelAssembler</span> com navegação hipermídia dinânica.</div>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- ========== SLIDE 3: TECNOLOGIAS ========== -->
+    <!-- ========== SLIDE 3: FLUXO COMPLETO DA ARQUITETURA ========== -->
     <div class="slide">
       <div class="slide-inner">
-        <div class="section-label">02 // STACK TECNOLÓGICA</div>
-        <h2 class="slide-title">Ecossistema Spring & <span class="highlight-gradient">Engenharia Java 21</span></h2>
-        <table class="tech-table">
-          <thead>
-            <tr>
-              <th>Tecnologia / Framework</th>
-              <th>Versão</th>
-              <th>Papel na Arquitetura</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><strong>Java LTS</strong></td>
-              <td><span class="badge-method get">21.0</span></td>
-              <td>Linguagem base com recursos modernos de produtividade.</td>
-            </tr>
-            <tr>
-              <td><strong>Spring Boot (Maven)</strong></td>
-              <td><span class="badge-method post">3.3.4</span></td>
-              <td>Framework base para rápida inicialização de microsserviços.</td>
-            </tr>
-            <tr>
-              <td><strong>Spring HATEOAS</strong></td>
-              <td><span class="badge-method put">RepresentationModel</span></td>
-              <td>Suporte a Hipermídia e Nível 3 de Maturidade RESTful.</td>
-            </tr>
-            <tr>
-              <td><strong>Lombok</strong></td>
-              <td><span class="badge-method patch">1.18.46</span></td>
-              <td>Injeção declarativa de Getters, Setters, Builders e Construtores.</td>
-            </tr>
-            <tr>
-              <td><strong>Oracle Data JPA / H2</strong></td>
-              <td><span class="badge-method get">OJDBC11</span></td>
-              <td>Mapeamento objeto-relacional com fallback transparente para H2.</td>
-            </tr>
-            <tr>
-              <td><strong>OpenAPI / Swagger UI</strong></td>
-              <td><span class="badge-method delete">v3.0</span></td>
-              <td>Documentação interativa e testes de endpoints no navegador.</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-
-    <!-- ========== SLIDE 4: HATEOAS MATURIDADE NÍVEL 3 ========== -->
-    <div class="slide">
-      <div class="slide-inner">
-        <div class="section-label">03 // MATURIDADE REST</div>
-        <h2 class="slide-title">HATEOAS Nível 3 com <span class="highlight-gradient">MercadoModelAssembler</span></h2>
-        <div class="cards-grid">
-          <div class="card">
-            <div class="card-icon">🏛️</div>
-            <div class="card-title">Arquitetura Limpa (Clean Code)</div>
-            <div class="card-text">A lógica de geração dos links hipermídia foi 100% desacoplada da camada de serviço e isolada na classe dedicada <span class="inline-code">MercadoModelAssembler</span>.</div>
-          </div>
-          <div class="card">
-            <div class="card-icon">🔗</div>
-            <div class="card-title">Hiperlinks Dinâmicos (_links)</div>
-            <div class="card-text">Cada produto retornado contém os links RESTful: <span class="inline-code">self</span>, <span class="inline-code">todos-produtos</span>, <span class="inline-code">atualizar</span>, <span class="inline-code">atualizar-parcial</span> e <span class="inline-code">deletar</span>.</div>
-          </div>
+        <div class="section-label">02 // FLUXO DA ARQUITETURA</div>
+        <h2 class="slide-title">Jornada de uma Requisição <span class="highlight-gradient">Passo a Passo</span></h2>
+        <div class="flow-diagram">
+[ Cliente / Browser / Postman ]
+               │
+               ▼  (1. HTTP POST /mercado na Porta 8082)
+┌─────────────────────────────────────────────────────────┐
+│ 2. MercadoController (@RestController)                 │  <-- Recebe o JSON, dispara @Valid
+└──────────────────────────┬──────────────────────────────┘
+                           │ 
+                           ▼  (Passa o MercadoRequestDto)
+┌─────────────────────────────────────────────────────────┐
+│ 3. MercadoService (@Service)                            │  <-- Regras de Negócio & @Transactional
+└──────────────────────────┬──────────────────────────────┘
+                           │ 
+                           ▼  (Converte DTO -> Entity Mercado)
+┌─────────────────────────────────────────────────────────┐
+│ 4. MercadoRepository (Spring Data JPA)                   │  <-- Executa SQL na tabela Oracle
+└──────────────────────────┬──────────────────────────────┘
+                           │ 
+                           ▼  (Retorna a Entidade com ID gerado pela Sequence)
+┌─────────────────────────────────────────────────────────┐
+│ 5. MercadoModelAssembler (Spring HATEOAS)               │  <-- Injeta a coleção de _links HATEOAS
+└──────────────────────────┬──────────────────────────────┘
+                           │ 
+                           ▼  (Retorna MercadoResponseDto com _links)
+[ 6. Resposta HTTP 201 Created + Header Location ]
         </div>
       </div>
     </div>
 
-    <!-- ========== SLIDE 5: MODELO E BANCO ORACLE ========== -->
+    <!-- ========== SLIDE 4: PASSO 1 - REQUISIÇÃO HTTP ========== -->
     <div class="slide">
       <div class="slide-inner">
-        <div class="section-label">04 // PERSISTÊNCIA DE DADOS</div>
-        <h2 class="slide-title">Tabela Oracle <span class="highlight-gradient">TDS_TB_MERCADO</span></h2>
+        <div class="section-label">03 // CAMADA 1 — REQUISIÇÃO HTTP</div>
+        <div class="flow-step-banner">
+          <div class="step-number-badge">1</div>
+          <div class="step-banner-info">
+            <h3>O Cliente Envia o JSON (HTTP POST /mercado)</h3>
+            <p>O cliente faz uma chamada para cadastrar um novo produto no servidor Tomcat na porta 8082.</p>
+          </div>
+        </div>
         <div class="code-container">
-<span class="code-keyword">CREATE TABLE</span> TDS_TB_MERCADO (
-    ID <span class="code-keyword">NUMBER</span>(19) <span class="code-keyword">DEFAULT</span> SQ_TDS_MERCADO.NEXTVAL <span class="code-keyword">PRIMARY KEY</span>,
-    NOME <span class="code-keyword">VARCHAR2</span>(100) <span class="code-keyword">NOT NULL</span>,
-    TIPO <span class="code-keyword">VARCHAR2</span>(50) <span class="code-keyword">NOT NULL</span>,   <span class="code-string">-- Ex: Limpeza, Alimentos, Vestuário, Brinquedos</span>
-    SETOR <span class="code-keyword">VARCHAR2</span>(50) <span class="code-keyword">NOT NULL</span>,  <span class="code-string">-- Ex: Higiene e Limpeza, Hortifruti, Bazar</span>
-    TAMANHO <span class="code-keyword">VARCHAR2</span>(30) <span class="code-keyword">NOT NULL</span>,<span class="code-string">-- Ex: 500ml, 1kg, Grande, Único</span>
-    PRECO <span class="code-keyword">NUMBER</span>(10, 2) <span class="code-keyword">NOT NULL</span>,
-    <span class="code-keyword">CONSTRAINT</span> CK_PRECO_POSITIVO <span class="code-keyword">CHECK</span> (PRECO > 0)
-);
+<span class="code-comment">// HTTP POST http://57.156.33.102:8082/mercado</span>
+<span class="code-comment">// Header: Content-Type: application/json</span>
+
+{
+  <span class="code-property">"nome"</span>: <span class="code-string">"Sabão em Pó Omo 1kg"</span>,
+  <span class="code-property">"tipo"</span>: <span class="code-string">"Limpeza"</span>,
+  <span class="code-property">"setor"</span>: <span class="code-string">"Higiene e Limpeza"</span>,
+  <span class="code-property">"tamanho"</span>: <span class="code-string">"1kg"</span>,
+  <span class="code-property">"preco"</span>: <span class="code-number">14.90</span>
+}
         </div>
       </div>
     </div>
 
-    <!-- ========== SLIDE 6: ENDPOINTS CRUD ========== -->
+    <!-- ========== SLIDE 5: PASSO 2 - CONTROLLER ========== -->
     <div class="slide">
       <div class="slide-inner">
-        <div class="section-label">05 // ENDPOINTS HTTP</div>
-        <h2 class="slide-title">Mapeamento de Rotas <span class="highlight-gradient">CRUD (/mercado)</span></h2>
-        <table class="tech-table">
-          <thead>
-            <tr>
-              <th>Verbo</th>
-              <th>Endpoint</th>
-              <th>Status Code</th>
-              <th>Descrição do Recurso</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><span class="badge-method get">GET</span></td>
-              <td><span class="inline-code">/mercado</span></td>
-              <td><span class="code-number">200 OK</span></td>
-              <td>Lista todos os produtos com links HATEOAS (filtro opcional <span class="inline-code">?tipo=...</span>).</td>
-            </tr>
-            <tr>
-              <td><span class="badge-method get">GET</span></td>
-              <td><span class="inline-code">/mercado/{id}</span></td>
-              <td><span class="code-number">200 OK</span></td>
-              <td>Consulta produto por ID no banco de dados.</td>
-            </tr>
-            <tr>
-              <td><span class="badge-method post">POST</span></td>
-              <td><span class="inline-code">/mercado</span></td>
-              <td><span class="code-number">201 Created</span></td>
-              <td>Cadastra novo produto e retorna Header <span class="inline-code">Location</span>.</td>
-            </tr>
-            <tr>
-              <td><span class="badge-method put">PUT</span></td>
-              <td><span class="inline-code">/mercado/{id}</span></td>
-              <td><span class="code-number">200 OK</span></td>
-              <td>Atualização completa de todos os atributos.</td>
-            </tr>
-            <tr>
-              <td><span class="badge-method patch">PATCH</span></td>
-              <td><span class="inline-code">/mercado/{id}</span></td>
-              <td><span class="code-number">200 OK</span></td>
-              <td>Atualização parcial pontual de campos como preço.</td>
-            </tr>
-            <tr>
-              <td><span class="badge-method delete">DELETE</span></td>
-              <td><span class="inline-code">/mercado/{id}</span></td>
-              <td><span class="code-number">204 No Content</span></td>
-              <td>Remove produto por ID no banco Oracle.</td>
-            </tr>
-          </tbody>
-        </table>
+        <div class="section-label">04 // CAMADA 2 — REST CONTROLLER</div>
+        <div class="flow-step-banner">
+          <div class="step-number-badge">2</div>
+          <div class="step-banner-info">
+            <h3>MercadoController & Validação (@Valid)</h3>
+            <p>Recebe o JSON, dispara as validações de Bean Validation e barra dados inválidos antes do Service.</p>
+          </div>
+        </div>
+        <div class="code-container">
+<span class="code-annotation">@RestController</span>
+<span class="code-annotation">@RequestMapping</span>(<span class="code-string">"/mercado"</span>)
+<span class="code-annotation">@RequiredArgsConstructor</span>
+<span class="code-keyword">public class</span> MercadoController {
+
+    <span class="code-keyword">private final</span> MercadoService service;
+
+    <span class="code-annotation">@PostMapping</span>
+    <span class="code-keyword">public</span> ResponseEntity&lt;MercadoResponseDto&gt; create(<span class="code-annotation">@Valid</span> <span class="code-annotation">@RequestBody</span> MercadoRequestDto dto) {
+        MercadoResponseDto response = service.create(dto);
+        <span class="code-comment">// Dispara para a camada de Serviço se @Valid for aprovado</span>
+    }
+}
+        </div>
       </div>
     </div>
 
-    <!-- ========== SLIDE 7: DEPLOY AZURE VM & DOCKER ========== -->
+    <!-- ========== SLIDE 6: PASSO 3 - SERVICE ========== -->
     <div class="slide">
       <div class="slide-inner">
-        <div class="section-label">06 // CLOUD & DEPLOY</div>
-        <h2 class="slide-title">Conteinerização & <span class="highlight-azure">Azure Virtual Machine</span></h2>
+        <div class="section-label">05 // CAMADA 3 — SERVICE & REGRA DE NEGÓCIO</div>
+        <div class="flow-step-banner">
+          <div class="step-number-badge">3</div>
+          <div class="step-banner-info">
+            <h3>MercadoService & Transação (@Transactional)</h3>
+            <p>Aplica regras de negócio, gerencia o ciclo da transação (tudo ou nada) e converte DTO para Entidade JPA.</p>
+          </div>
+        </div>
+        <div class="code-container">
+<span class="code-annotation">@Service</span>
+<span class="code-annotation">@RequiredArgsConstructor</span>
+<span class="code-keyword">public class</span> MercadoService {
+
+    <span class="code-keyword">private final</span> MercadoRepository repository;
+    <span class="code-keyword">private final</span> MercadoModelAssembler assembler;
+
+    <span class="code-annotation">@Transactional</span>
+    <span class="code-keyword">public</span> MercadoResponseDto create(MercadoRequestDto dto) {
+        Mercado entity = Mercado.builder()
+                .nome(dto.getNome()).tipo(dto.getTipo())
+                .setor(dto.getSetor()).tamanho(dto.getTamanho()).preco(dto.getPreco())
+                .build();
+
+        Mercado savedEntity = repository.save(entity); <span class="code-comment">// Salva no banco Oracle</span>
+        <span class="code-keyword">return</span> assembler.toModel(savedEntity);        <span class="code-comment">// Converte para DTO com HATEOAS</span>
+    }
+}
+        </div>
+      </div>
+    </div>
+
+    <!-- ========== SLIDE 7: PASSO 4 - REPOSITORY & ORACLE ========== -->
+    <div class="slide">
+      <div class="slide-inner">
+        <div class="section-label">06 // CAMADA 4 — PERSISTÊNCIA & ORACLE DB</div>
+        <div class="flow-step-banner">
+          <div class="step-number-badge">4</div>
+          <div class="step-banner-info">
+            <h3>MercadoRepository & Oracle (TDS_TB_MERCADO)</h3>
+            <p>Executa o INSERT na tabela Oracle atribuindo a Primary Key através da Sequence SQ_TDS_MERCADO.</p>
+          </div>
+        </div>
+        <div class="code-container">
+<span class="code-comment">-- SQL NATIVO EXECUTADO PELO SPRING DATA JPA NO ORACLE:</span>
+<span class="code-keyword">INSERT INTO</span> TDS_TB_MERCADO (ID, NOME, TIPO, SETOR, TAMANHO, PRECO)
+<span class="code-keyword">VALUES</span> (SQ_TDS_MERCADO.NEXTVAL, <span class="code-string">'Sabão em Pó Omo 1kg'</span>, <span class="code-string">'Limpeza'</span>, <span class="code-string">'Higiene e Limpeza'</span>, <span class="code-string">'1kg'</span>, <span class="code-number">14.90</span>);
+        </div>
+      </div>
+    </div>
+
+    <!-- ========== SLIDE 8: PASSO 5 - HATEOAS ASSEMBLER ========== -->
+    <div class="slide">
+      <div class="slide-inner">
+        <div class="section-label">07 // CAMADA 5 — MONTAGEM HATEOAS NÍVEL 3</div>
+        <div class="flow-step-banner">
+          <div class="step-number-badge">5</div>
+          <div class="step-banner-info">
+            <h3>MercadoModelAssembler & Hipermídia (_links)</h3>
+            <p>Converte a entidade salva em MercadoResponseDto injetando a coleção de links navegáveis (_links).</p>
+          </div>
+        </div>
+        <div class="code-container">
+<span class="code-annotation">@Override</span>
+<span class="code-keyword">public</span> MercadoResponseDto toModel(Mercado entity) {
+    MercadoResponseDto dto = MercadoResponseDto.fromEntity(entity);
+
+    dto.add(linkTo(methodOn(MercadoController.class).findById(entity.getId())).withSelfRel());
+    dto.add(linkTo(methodOn(MercadoController.class).findAll(<span class="code-keyword">null</span>)).withRel(<span class="code-string">"todos-produtos"</span>));
+    dto.add(linkTo(methodOn(MercadoController.class).update(entity.getId(), <span class="code-keyword">null</span>)).withRel(<span class="code-string">"atualizar"</span>));
+    dto.add(linkTo(methodOn(MercadoController.class).delete(entity.getId())).withRel(<span class="code-string">"deletar"</span>));
+
+    <span class="code-keyword">return</span> dto;
+}
+        </div>
+      </div>
+    </div>
+
+    <!-- ========== SLIDE 9: PASSO 6 - RESPOSTA HTTP 201 CREATED ========== -->
+    <div class="slide">
+      <div class="slide-inner">
+        <div class="section-label">08 // RETORNO FINAL — HTTP 201 CREATED</div>
+        <div class="flow-step-banner">
+          <div class="step-number-badge">6</div>
+          <div class="step-banner-info">
+            <h3>Resposta HTTP 201 Created + Header Location</h3>
+            <p>O Controller devolve o código HTTP 201 Created com o cabeçalho Location apontando para a URL do novo recurso.</p>
+          </div>
+        </div>
+        <div class="code-container">
+<span class="code-comment">// HTTP/1.1 201 Created</span>
+<span class="code-comment">// Header Location: http://57.156.33.102:8082/mercado/15</span>
+
+{
+  <span class="code-property">"id"</span>: <span class="code-number">15</span>,
+  <span class="code-property">"nome"</span>: <span class="code-string">"Sabão em Pó Omo 1kg"</span>,
+  <span class="code-property">"tipo"</span>: <span class="code-string">"Limpeza"</span>,
+  <span class="code-property">"setor"</span>: <span class="code-string">"Higiene e Limpeza"</span>,
+  <span class="code-property">"tamanho"</span>: <span class="code-string">"1kg"</span>,
+  <span class="code-property">"preco"</span>: <span class="code-number">14.90</span>,
+  <span class="code-property">"_links"</span>: {
+    <span class="code-property">"self"</span>: { <span class="code-property">"href"</span>: <span class="code-string">"http://57.156.33.102:8082/mercado/15"</span> },
+    <span class="code-property">"todos-produtos"</span>: { <span class="code-property">"href"</span>: <span class="code-string">"http://57.156.33.102:8082/mercado"</span> },
+    <span class="code-property">"atualizar"</span>: { <span class="code-property">"href"</span>: <span class="code-string">"http://57.156.33.102:8082/mercado/15"</span> },
+    <span class="code-property">"deletar"</span>: { <span class="code-property">"href"</span>: <span class="code-string">"http://57.156.33.102:8082/mercado/15"</span> }
+  }
+}
+        </div>
+      </div>
+    </div>
+
+    <!-- ========== SLIDE 10: INFRAESTRUTURA & AZURE DEPLOY ========== -->
+    <div class="slide">
+      <div class="slide-inner">
+        <div class="section-label">09 // CLOUD & DEVOPS</div>
+        <h2 class="slide-title">Infraestrutura Azure & <span class="highlight-azure">Docker Multi-Stage</span></h2>
         <div class="cards-grid">
           <div class="card">
             <div class="card-icon">☁️</div>
-            <div class="card-title">VM Azure (AlmaLinux 10)</div>
-            <div class="card-text">Instância <span class="inline-code">vm-linux-free</span> implantada no IP público <strong>57.156.33.102</strong> na região <span class="inline-code">chilecentral</span>.</div>
+            <div class="card-title">VM Linux Azure (AlmaLinux 10)</div>
+            <div class="card-text">Instância <span class="inline-code">vm-linux-free</span> no IP <strong>57.156.33.102</strong> com regras NSG ativas para as portas 80 (Apresentação) e 8082 (Spring API).</div>
           </div>
           <div class="card">
             <div class="card-icon">🐳</div>
-            <div class="card-title">Docker Multi-Stage</div>
-            <div class="card-text">Build otimizado isolando o empacotamento Maven do ambiente de execução minimalista Java 21 JRE.</div>
+            <div class="card-title">Docker Multi-Stage Build</div>
+            <div class="card-text">Isolamento em 2 estágios: Estágio 1 compila o JAR com Maven; Estágio 2 executa em JRE 21 Alpine minimalista (~180MB).</div>
           </div>
           <div class="card">
-            <div class="card-icon">🌐</div>
-            <div class="card-title">Acesso em Produção</div>
-            <div class="card-text">Swagger UI disponível ao vivo no link público: <br><a href="http://57.156.33.102:8082/swagger-ui.html" target="_blank" style="color:var(--accent-teal)">http://57.156.33.102:8082/swagger-ui.html</a></div>
+            <div class="card-icon">🛡️</div>
+            <div class="card-title">Resiliência & Fallback H2</div>
+            <div class="card-text">Fallback transparente para banco H2 In-Memory com sintaxe Oracle, garantindo 100% de disponibilidade caso o servidor da FIAP oscile.</div>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- ========== SLIDE 8: EVIDÊNCIAS DE TESTES ========== -->
+    <!-- ========== SLIDE 11: CONCLUSÃO E EVIDÊNCIAS ========== -->
     <div class="slide">
-      <div class="slide-inner">
-        <div class="section-label">07 // EVIDÊNCIAS DE TESTES</div>
-        <h2 class="slide-title">Validação Real dos <span class="highlight-gradient">Endpoints (Swagger UI)</span></h2>
-        <div class="img-grid">
+      <div class="slide-inner" style="text-align:center">
+        <div class="section-label">10 // CONCLUSÃO</div>
+        <h2 class="slide-title">Projeto Concluído com <span class="highlight-gradient">100% de Conformidade</span></h2>
+        <div class="img-grid" style="margin-bottom:24px">
           <div class="img-card">
             <img src="docs/images/swagger_post_201.png" alt="POST 201 Created">
             <div class="img-caption">1. POST /mercado — 201 Created & Header Location</div>
@@ -653,27 +777,7 @@
             <div class="img-caption">3. DELETE /mercado/{id} — 204 No Content</div>
           </div>
         </div>
-      </div>
-    </div>
-
-    <!-- ========== SLIDE 9: CONCLUSÃO ========== -->
-    <div class="slide">
-      <div class="slide-inner" style="text-align:center">
-        <div class="section-label">08 // CONCLUSÃO</div>
-        <h2 class="slide-title">Projeto Concluído com <span class="highlight-gradient">100% de Conformidade</span></h2>
-        <div class="cards-grid" style="margin-bottom:30px">
-          <div class="card">
-            <div class="card-icon">📦</div>
-            <div class="card-title">Pacote de Submissão</div>
-            <div class="card-text">Arquivo <span class="inline-code">562795 - Gabriel Maciel Alves de Oliveira - Checkpoint 4.zip</span> gerado na Área de Trabalho.</div>
-          </div>
-          <div class="card">
-            <div class="card-icon">🚀</div>
-            <div class="card-title">Repositório GitHub</div>
-            <div class="card-text">Código-fonte commitado e sincronizado no repositório público: <a href="https://github.com/Gabriel-Maciel06/CpJava4.git" target="_blank" style="color:var(--accent-green)">CpJava4.git</a></div>
-          </div>
-        </div>
-        <a href="http://57.156.33.102:8082/swagger-ui.html" target="_blank" class="btn-link btn-primary" style="font-size:16px; padding:14px 32px">
+        <a href="http://57.156.33.102:8082/swagger-ui.html" target="_blank" class="btn-link btn-primary" style="font-size:15px; padding:12px 28px">
           🚀 Acessar Swagger UI na Nuvem Azure
         </a>
       </div>
@@ -681,10 +785,10 @@
 
   </div>
 
-  <!-- Navigation -->
+  <!-- Navigation Bar -->
   <div class="nav-bar">
     <div class="nav-dots" id="navDots"></div>
-    <div class="nav-counter" id="navCounter">01 / 09</div>
+    <div class="nav-counter" id="navCounter">01 / 11</div>
     <div class="nav-buttons">
       <button class="nav-btn" id="prevBtn" onclick="changeSlide(-1)">← Anterior</button>
       <button class="nav-btn" id="nextBtn" onclick="changeSlide(1)">Próximo →</button>
