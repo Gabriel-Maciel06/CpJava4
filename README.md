@@ -46,7 +46,7 @@ O módulo **`mercado-express-mvc`** implementa uma interface Web completa para a
 ---
 
 ### 📸 Configuração do Spring Initializr (Parte 2)
-![Spring Initializr Config](docs/spring_initializr_cp4_parte2.png)
+![Spring Initializr Config]
 
 ---
 
