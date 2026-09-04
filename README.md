@@ -1,8 +1,6 @@
-# 🛒 Mercado Express API — FIAP Checkpoint 4 (Parte 1)
-
-> **API RESTful de Alta Maturidade (HATEOAS Nível 3) para Gestão de Estoque do Mercado Express**  
-> **Framework:** Spring Boot 3.3 | **Linguagem:** Java 21 | **Persistência:** Spring Data JPA + Oracle DB / H2  
-> **IDE Utilizada:** IntelliJ IDEA Ultimate Edition
+# 🛒 Mercado Express — FIAP Checkpoint 4 (Partes 1 e 2)
+> **Professor:** Marcel • **Disciplina:** Desenvolvimento Web com Java / Spring Framework  
+> **Framework:** Spring Boot 3.3 | **Linguagem:** Java 21 LTS | **IDE Utilizada:** IntelliJ IDEA Ultimate  
 
 ---
 
@@ -16,297 +14,102 @@
 | **Thomas Fontes** | **RM562254** |
 | **Matheus Pereira Molina** | **RM563399** |
 
-* **Repositório GitHub:** [https://github.com/Gabriel-Maciel06/CpJava4.git](https://github.com/Gabriel-Maciel06/CpJava4.git)
-* **Link de Deploy da API (Azure VM):** [http://57.156.33.102:8082/swagger-ui.html](http://57.156.33.102:8082/swagger-ui.html)
+* **Repositório GitHub Oficial:** [https://github.com/Gabriel-Maciel06/CpJava4.git](https://github.com/Gabriel-Maciel06/CpJava4.git)
+* **Link de Deploy — Parte 1 (API REST Swagger):** [http://57.156.33.102:8082/swagger-ui.html](http://57.156.33.102:8082/swagger-ui.html)
+* **Link de Deploy — Parte 2 (Spring Web MVC & Security):** [http://mercado-express-rm562795.chilecentral.azurecontainer.io:8090](http://mercado-express-rm562795.chilecentral.azurecontainer.io:8090)
+* **Sistema Utilizado para o Deploy:** Microsoft Azure Container Instances / Azure Cloud VM (Docker Linux)
 
 ---
 
-## 📝 Descrição do Projeto
+## 📦 Estrutura dos Módulos do Repositório
 
-O **Mercado Express API** foi desenvolvido para atender às demandas de redes de mercados express de conveniência (venda de produtos de limpeza, hortifruti, vestuário/bazar, brinquedos, higiene e alimentos). 
+O repositório foi organizado em dois módulos independentes e complementares:
 
-A aplicação oferece um conjunto completo de endpoints **CRUD** (Create, Read, Update, Delete), implementando o **Nível 3 do Modelo de Maturidade de Richardson (HATEOAS)** com `RepresentationModelAssemblerSupport` (`MercadoModelAssembler`), permitindo que clientes da API naveguem dinamicamente pelos recursos por meio de hipermídias (`_links`).
-
----
-
-## 📸 Evidências e Screenshots de Execução (Swagger UI & REST API)
-
-### 1️⃣ Cadastro de Produto (`POST /mercado` — Status 201 Created & Header Location)
-![POST Mercado 201 Created](docs/images/swagger_post_201.png)
-
-### 2️⃣ Retorno do JSON com Links HATEOAS (Maturidade Nível 3 de Richardson)
-![GET Mercado HATEOAS Response](docs/images/swagger_get_hateoas.png)
-
-### 3️⃣ Exclusão de Produto por ID (`DELETE /mercado/{id}` — Status 204 No Content)
-![DELETE Mercado 204 No Content](docs/images/swagger_delete_204.png)
+```
+CpJava4/
+├── mercado-express-api/          <-- PARTE 1: Spring REST API com HATEOAS Nível 3 e Swagger
+├── mercado-express-mvc/          <-- PARTE 2: Spring Web MVC + Thymeleaf + Spring Security
+├── docs/
+│   ├── spring_initializr_cp4_parte2.png   <-- Print Oficial de Configuração do Initializr
+│   └── ROTEIRO_GRAVACAO_VIDEO_PARTE2.md   <-- Roteiro de Vídeo (~5 Minutos)
+├── integrantes.txt               <-- Arquivo de Entrega Oficial para o Professor Marcel
+└── README.md
+```
 
 ---
 
-## 🛠️ Tecnologias e Ecossistema Spring Utilizados
+# 🌐 PARTE 2 — Spring Web, MVC, Security e Deploy (Thymeleaf)
 
-- **Java 21 LTS** — Recursos modernos da linguagem.
-- **Spring Boot 3.3.4 (Maven)** — Framework base para rápida configuração de microsserviços.
-- **Spring HATEOAS** — Adição de navegação hipermídia com `RepresentationModelAssemblerSupport`.
-- **Spring Data JPA & Hibernate** — Abstração e ORM para manipulação do banco de dados Oracle.
-- **Lombok 1.18.46** — Produtividade com anotações (`@Getter`, `@Setter`, `@NoArgsConstructor`, `@AllArgsConstructor`, `@Builder`).
-- **Spring Validation (Jakarta Validation)** — Validação declarativa de entrada de dados (`@NotBlank`, `@NotNull`, `@Positive`).
-- **Oracle JDBC Driver (OJDBC11) / H2 Database** — Suporte ao banco Oracle FIAP com fallback transparente H2 em memória.
-- **OpenAPI 3 / Swagger UI** — Documentação e testes interativos no navegador (`http://57.156.33.102:8082/swagger-ui.html`).
-- **Docker & Docker Compose** — Conteinerização para deploy em nuvem na VM Azure.
+### 📝 Descrição da Aplicação Web
+O módulo **`mercado-express-mvc`** implementa uma interface Web completa para a gestão de produtos do mercado express (meias, produtos de limpeza, hortifruti, brinquedos, bebidas e padaria), com **Thymeleaf**, **Spring MVC**, **Spring Security 6** e persistência na tabela **`TDS_MVC_TB_MERCADO`**.
 
 ---
 
-## 🗄️ Estrutura da Tabela do Banco de Dados (`TDS_TB_MERCADO`)
+### 📸 Configuração do Spring Initializr (Parte 2)
+![Spring Initializr Config](docs/spring_initializr_cp4_parte2.png)
 
-A persistência de dados é realizada na tabela `TDS_TB_MERCADO` do banco Oracle FIAP.
+---
+
+### 🔒 Segurança e Perfis de Acesso (Spring Security)
+A aplicação conta com autenticação personalizada via formulário estilizado em Thymeleaf (`/login`) e controle de acesso baseado em Roles:
+
+| Usuário | Senha | Perfil (Role) | Permissões |
+| :--- | :--- | :--- | :--- |
+| `admin` | `admin123` | `ROLE_ADMIN`, `ROLE_USER` | Acesso total: Listar, Cadastrar, Editar e **Excluir** produtos |
+| `operador` | `operador123` | `ROLE_USER` | Acesso operacional: Listar, Cadastrar e Editar produtos |
+
+- **Rotas Públicas:** `/login`, `/css/**`, `/js/**`, `/images/**`, `/webjars/**`
+- **Rotas Privadas:** `/`, `/dashboard`, `/produtos`, `/produtos/novo`, `/produtos/salvar`, `/produtos/editar/**`, `/produtos/detalhes/**`
+- **Rota Restrita a ADMIN:** `/produtos/excluir/**` (Usuários sem privilégios recebem tela 403 amigável).
+
+---
+
+### 📱 Funcionalidades do CRUD Web
+1. **Dashboard (`/`):** Estatísticas consolidadas (Total de produtos, itens com estoque baixo ≤ 5 e valor patrimonial).
+2. **Listagem e Filtros (`/produtos`):** Tabela responsiva com badges coloridos por categoria e filtro por nome/categoria.
+3. **Cadastro e Edição (`/produtos/novo` e `/produtos/editar/{id}`):** Formulário validado com **Bean Validation** e mensagens de erro em linha (`th:errors`).
+4. **Visualização Detalhada (`/produtos/detalhes/{id}`):** Ficha técnica com precificação, estoque e código EAN-13.
+5. **Exclusão Segura (`/produtos/excluir/{id}`):** Exclusão física com modal de confirmação e verificação de perfil `ROLE_ADMIN`.
+
+---
+
+### 🗄️ Estrutura da Tabela do Banco de Dados (`TDS_MVC_TB_MERCADO`)
 
 ```sql
-CREATE TABLE TDS_TB_MERCADO (
-    ID NUMBER(19) DEFAULT SQ_TDS_MERCADO.NEXTVAL PRIMARY KEY,
-    NOME VARCHAR2(100) NOT NULL,
-    TIPO VARCHAR2(50) NOT NULL,
-    SETOR VARCHAR2(50) NOT NULL,
-    TAMANHO VARCHAR2(30) NOT NULL,
-    PRECO NUMBER(10, 2) NOT NULL,
-    CONSTRAINT CK_PRECO_POSITIVO CHECK (PRECO > 0)
+CREATE TABLE TDS_MVC_TB_MERCADO (
+    ID BIGINT GENERATED BY DEFAULT AS IDENTITY PRIMARY KEY,
+    NOME VARCHAR(120) NOT NULL,
+    CATEGORIA VARCHAR(30) NOT NULL,
+    CODIGO_BARRAS VARCHAR(30),
+    PRECO NUMERIC(10,2) NOT NULL,
+    ESTOQUE INTEGER NOT NULL,
+    DESCRICAO VARCHAR(300),
+    DATA_CADASTRO TIMESTAMP NOT NULL
 );
 ```
 
-### Mapeamento dos Atributos
-- **Id (`ID`)**: Identificador único numérico de incremento automático via `SQ_TDS_MERCADO`.
-- **Nome (`NOME`)**: Descrição/nome comercial do produto (ex: Detergente Líquido 500ml).
-- **Tipo (`TIPO`)**: Categoria do item (ex: Limpeza, Alimentos, Hortifruti, Brinquedos).
-- **Setor (`SETOR`)**: Seção do mercado (ex: Higiene e Limpeza, Hortifruti, Bazar, Infantil).
-- **Tamanho (`TAMANHO`)**: Especificação de porte/conteúdo (ex: 500ml, 1kg, Grande, Único).
-- **Preço (`PRECO`)**: Valor unitário em reais (`BigDecimal`).
+---
+
+# 🚀 PARTE 1 — Spring REST API com HATEOAS Nível 3
+
+### 📝 Descrição da API REST
+O módulo **`mercado-express-api`** oferece endpoints RESTful com **Nível 3 do Modelo de Maturidade de Richardson (HATEOAS)** com `MercadoModelAssembler`, permitindo que clientes da API naveguem dinamicamente pelos recursos por meio de hipermídias (`_links`).
+
+- **Swagger UI:** `http://57.156.33.102:8082/swagger-ui.html`
+- **Endpoints:** `GET`, `POST`, `PUT`, `DELETE` em `/mercado`
+- **Tabela:** `TDS_TB_MERCADO`
 
 ---
 
-## 📡 Endpoints da API e Exemplos do CRUD
+## 💻 Como Executar na IDE (IntelliJ IDEA)
 
-> **Servidor em Produção (Azure VM):** `http://57.156.33.102:8082`  
-> **Servidor Local:** `http://localhost:8082`  
-> **Porta Obrigatória:** `8082`
-
----
-
-### 1️⃣ `GET /mercado` — Listar Todos os Produtos (com HATEOAS)
-Retorna todos os produtos cadastrados com links HATEOAS.
-
-**Requisição:**
-`GET http://57.156.33.102:8082/mercado`
-
-**Resposta (`200 OK`):**
-```json
-{
-  "_embedded": {
-    "produtos": [
-      {
-        "id": 1,
-        "nome": "LARANJA",
-        "tipo": "FRUTA",
-        "setor": "HORTIFRUTI",
-        "tamanho": "GRANDE",
-        "preco": 10.0,
-        "_links": {
-          "self": {
-            "href": "http://57.156.33.102:8082/mercado/1"
-          },
-          "todos-produtos": {
-            "href": "http://57.156.33.102:8082/mercado"
-          },
-          "atualizar": {
-            "href": "http://57.156.33.102:8082/mercado/1"
-          },
-          "atualizar-parcial": {
-            "href": "http://57.156.33.102:8082/mercado/1"
-          },
-          "deletar": {
-            "href": "http://57.156.33.102:8082/mercado/1"
-          }
-        }
-      }
-    ]
-  },
-  "_links": {
-    "self": {
-      "href": "http://57.156.33.102:8082/mercado"
-    }
-  }
-}
-```
-
----
-
-### 2️⃣ `GET /mercado/{id}` — Consultar Produto por ID
-Retorna os detalhes de um produto específico.
-
-**Requisição:**
-`GET http://57.156.33.102:8082/mercado/1`
-
-**Resposta (`200 OK`):**
-```json
-{
-  "id": 1,
-  "nome": "LARANJA",
-  "tipo": "FRUTA",
-  "setor": "HORTIFRUTI",
-  "tamanho": "GRANDE",
-  "preco": 10.0,
-  "_links": {
-    "self": {
-      "href": "http://57.156.33.102:8082/mercado/1"
-    },
-    "todos-produtos": {
-      "href": "http://57.156.33.102:8082/mercado"
-    },
-    "atualizar": {
-      "href": "http://57.156.33.102:8082/mercado/1"
-    },
-    "atualizar-parcial": {
-      "href": "http://57.156.33.102:8082/mercado/1"
-    },
-    "deletar": {
-      "href": "http://57.156.33.102:8082/mercado/1"
-    }
-  }
-}
-```
-
----
-
-### 3️⃣ `POST /mercado` — Cadastrar Novo Produto (Create)
-Cadastra um novo produto no banco de dados.
-
-**Requisição:**
-`POST http://57.156.33.102:8082/mercado`  
-*Header:* `Content-Type: application/json`
-
-**JSON de Entrada:**
-```json
-{
-  "nome": "LARANJA",
-  "tipo": "FRUTA",
-  "setor": "HORTIFRUTI",
-  "tamanho": "GRANDE",
-  "preco": 10.0
-}
-```
-
-**Resposta (`201 Created`):**
-*Header Location:* `http://57.156.33.102:8082/mercado/1`
-```json
-{
-  "id": 1,
-  "nome": "LARANJA",
-  "tipo": "FRUTA",
-  "setor": "HORTIFRUTI",
-  "tamanho": "GRANDE",
-  "preco": 10.0,
-  "_links": {
-    "self": {
-      "href": "http://57.156.33.102:8082/mercado/1"
-    },
-    "todos-produtos": {
-      "href": "http://57.156.33.102:8082/mercado"
-    },
-    "atualizar": {
-      "href": "http://57.156.33.102:8082/mercado/1"
-    },
-    "atualizar-parcial": {
-      "href": "http://57.156.33.102:8082/mercado/1"
-    },
-    "deletar": {
-      "href": "http://57.156.33.102:8082/mercado/1"
-    }
-  }
-}
-```
-
----
-
-### 4️⃣ `PUT /mercado/{id}` — Atualizar Produto Completo (Update)
-Substitui todas as informações de um produto existente.
-
-**Requisição:**
-`PUT http://57.156.33.102:8082/mercado/1`  
-*Header:* `Content-Type: application/json`
-
-**JSON de Entrada:**
-```json
-{
-  "nome": "LARANJA SELECIONADA",
-  "tipo": "FRUTA",
-  "setor": "HORTIFRUTI",
-  "tamanho": "GRANDE",
-  "preco": 12.50
-}
-```
-
----
-
-### 5️⃣ `PATCH /mercado/{id}` — Atualização Parcial
-Altera pontualmente um ou mais atributos de um produto (ex: reajuste de preço).
-
-**Requisição:**
-`PATCH http://57.156.33.102:8082/mercado/1`  
-*Header:* `Content-Type: application/json`
-
-**JSON de Entrada:**
-```json
-{
-  "preco": 11.90
-}
-```
-
----
-
-### 6️⃣ `DELETE /mercado/{id}` — Excluir Produto (Delete)
-Remove um registro do banco pelo ID.
-
-**Requisição:**
-`DELETE http://57.156.33.102:8082/mercado/1`
-
-**Resposta (`204 No Content`):**
-*(Corpo vazio)*
-
----
-
-## 🚀 Como Executar o Projeto Localmente
-
-### Pré-requisitos
-- JDK 21+ instalado
-- Apache Maven 3.8+
-
-### Passos:
-1. Clone este repositório:
-   ```bash
-   git clone https://github.com/Gabriel-Maciel06/CpJava4.git
-   cd CpJava4/mercado-express-api
-   ```
-2. Compile e execute a aplicação:
-   ```bash
-   mvn spring-boot:run
-   ```
-3. A API estará acessível em `http://localhost:8082/mercado`.
-4. Documentação Swagger UI: `http://localhost:8082/swagger-ui.html`
-5. Console do Banco H2 (Modo Dev): `http://localhost:8082/h2-console`  
-   - JDBC URL: `jdbc:h2:mem:mercadodb`
-   - User: `sa` | Password: *(vazio)*
-
----
-
-## ☁️ Deploy e Nuvem
-
-A API foi conteinerizada via **Docker** e implantada na nuvem **Azure Virtual Machine** (`vm-linux-free`).
-- **URL da API em Produção:** `http://57.156.33.102:8082/swagger-ui.html`
-- **IP Público da VM:** `57.156.33.102`
-- **Porta:** `8082`
-
----
-
-## 📸 Configuração do Spring Initializr
-
-Abaixo está o registro da configuração inicial do projeto com suas respectivas dependências:
-
-![Spring Initializr Dependencies](SpringInitializr_dependencies.png)
+1. Abra o **IntelliJ IDEA** ➔ **File ➔ Open** e selecione a pasta do módulo desejado:
+   - Para a **Parte 2 (Web MVC):** Abra `mercado-express-mvc`
+   - Para a **Parte 1 (API REST):** Abra `mercado-express-api`
+2. Aguarde a importação automática das dependências pelo Maven.
+3. Execute a classe principal:
+   - Parte 2: `com.fiap.mercadoexpressmvc.MercadoExpressMvcApplication`
+   - Parte 1: `com.fiap.mercadoexpress.MercadoExpressApiApplication`
+4. Acesse no seu navegador:
+   - Parte 2 (Web MVC): `http://localhost:8090`
+   - Parte 1 (API REST): `http://localhost:8082/swagger-ui.html`

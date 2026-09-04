@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/layout :: head('Login')}"></head>
+<body class="bg-light d-flex flex-column min-vh-100">
+
+  <header th:replace="~{fragments/layout :: navbar}"></header>
+
+  <main class="container d-flex align-items-center justify-content-center py-5">
+    <div class="card login-card shadow-lg p-4 p-md-5 border-0 bg-white">
+      <div class="text-center mb-4">
+        <div class="bg-primary text-white rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 64px; height: 64px;">
+          <i class="bi bi-shield-lock-fill fs-2"></i>
+        </div>
+        <h3 class="fw-bold text-dark">Autenticação</h3>
+        <p class="text-muted small">Acesse o painel do Mercado Express MVC</p>
+      </div>
+
+      <!-- Alerta de Erro de Login -->
+      <div th:if="${mensagemErro}" class="alert alert-danger d-flex align-items-center py-2" role="alert">
+        <i class="bi bi-exclamation-triangle-fill flex-shrink-0 me-2"></i>
+        <div th:text="${mensagemErro}">Mensagem de erro</div>
+      </div>
+
+      <!-- Alerta de Logout -->
+      <div th:if="${mensagemSucesso}" class="alert alert-success d-flex align-items-center py-2" role="alert">
+        <i class="bi bi-check-circle-fill flex-shrink-0 me-2"></i>
+        <div th:text="${mensagemSucesso}">Mensagem de sucesso</div>
+      </div>
+
+      <!-- Formulário de Login Spring Security -->
+      <form th:action="@{/login}" method="post">
+        <div class="mb-3">
+          <label for="username" class="form-label fw-semibold">Usuário</label>
+          <div class="input-group">
+            <span class="input-group-text bg-light"><i class="bi bi-person"></i></span>
+            <input type="text" class="form-control" id="username" name="username" placeholder="Digite seu usuário" required autofocus>
+          </div>
+        </div>
+
+        <div class="mb-4">
+          <label for="password" class="form-label fw-semibold">Senha</label>
+          <div class="input-group">
+            <span class="input-group-text bg-light"><i class="bi bi-key"></i></span>
+            <input type="password" class="form-control" id="password" name="password" placeholder="Digite sua senha" required>
+          </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary w-100 py-2 fw-semibold rounded-3">
+          <i class="bi bi-box-arrow-in-right me-1"></i> Acessar Sistema
+        </button>
+      </form>
+
+      <!-- Credenciais de Teste para o Professor -->
+      <div class="mt-4 p-3 bg-light rounded-3 border">
+        <p class="mb-1 text-muted small fw-bold"><i class="bi bi-info-circle-fill text-primary"></i> Credenciais para Avaliação:</p>
+        <div class="small">
+          <div><strong>Admin:</strong> <code>admin</code> / Senha: <code>admin123</code> <span class="badge bg-danger">ROLE_ADMIN</span></div>
+          <div><strong>Operador:</strong> <code>operador</code> / Senha: <code>operador123</code> <span class="badge bg-secondary">ROLE_USER</span></div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer th:replace="~{fragments/layout :: footer}"></footer>
+  <div th:replace="~{fragments/layout :: scripts}"></div>
+
+</body>
+</html>

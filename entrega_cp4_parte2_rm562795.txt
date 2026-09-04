@@ -1,0 +1,46 @@
+================================================================================
+FIAP - TECNOLOGIA EM DESENVOLVIMENTO DE SISTEMAS
+CHECKPOINT 4 - PARTE 2: SPRING WEB, MVC, SECURITY E DEPLOY
+================================================================================
+
+1. INTEGRANTES DO GRUPO:
+- Gabriel Maciel Alves de Oliveira (RM562795)
+- Vitória Rodrigues Martins (RM565160)
+- Augusto Bonomo Júnior (RM565155)
+- Thomas Fontes (RM562254)
+- Matheus Pereira Molina (RM563399)
+
+--------------------------------------------------------------------------------
+2. INFORMAÇÕES DO PROJETO E REPOSITÓRIO:
+- Repositório GitHub Oficial (Parte II Separada):
+  https://github.com/Gabriel-Maciel06/cp4-java-mercado-express-mvc
+
+- IDE Utilizada para Elaboração do Projeto:
+  IntelliJ IDEA (compatível também com Eclipse e NetBeans via Maven)
+
+- Link do Deploy em Produção:
+  http://mercado-express-rm562795.chilecentral.azurecontainer.io:8090
+
+- Sistema Utilizado para o Deploy:
+  Microsoft Azure Container Instances (PaaS / Docker Linux Container)
+
+--------------------------------------------------------------------------------
+3. CREDENCIAIS DE ACESSO PARA AVALIAÇÃO DO PROFESSOR:
+- Usuário Administrador (Acesso total + Exclusão):
+  Login: admin
+  Senha: admin123
+  Perfil: ROLE_ADMIN, ROLE_USER
+
+- Usuário Operador (Leitura, Cadastro e Edição):
+  Login: operador
+  Senha: operador123
+  Perfil: ROLE_USER
+
+--------------------------------------------------------------------------------
+4. RESUMO TÉCNICO:
+- Framework: Java 21 LTS + Spring Boot 3.3.4
+- Arquitetura: Spring MVC com Controllers (@Controller) e DTOs com Bean Validation
+- Interface Web: Thymeleaf 3 com layout fragments, Bootstrap 5.3 e ícones
+- Segurança: Spring Security 6 com autenticação por formulário customizado (/login)
+- Banco de Dados: Tabela TDS_MVC_TB_MERCADO mapeada via Spring Data JPA / Hibernate
+================================================================================

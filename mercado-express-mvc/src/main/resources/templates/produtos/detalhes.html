@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:replace="~{fragments/layout :: head('Detalhes do Produto')}"></head>
+<body class="bg-light d-flex flex-column min-vh-100">
+
+  <header th:replace="~{fragments/layout :: navbar}"></header>
+
+  <main class="container py-4">
+    <div class="row justify-content-center">
+      <div class="col-lg-8">
+
+        <!-- Breadcrumb / Voltar -->
+        <nav aria-label="breadcrumb" class="mb-3">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a th:href="@{/produtos}" class="text-decoration-none">Produtos</a></li>
+            <li class="breadcrumb-item active" th:text="${produto.nome}">Produto</li>
+          </ol>
+        </nav>
+
+        <div class="card border-0 shadow-sm bg-white overflow-hidden">
+          <div class="card-header bg-dark text-white p-4 d-flex justify-content-between align-items-center">
+            <div>
+              <span class="badge rounded-pill px-3 py-2 mb-2" th:classappend="${produto.categoria.badgeClass}" th:text="${produto.categoria.descricao}">Categoria</span>
+              <h3 class="fw-bold mb-0 text-white" th:text="${produto.nome}">Nome do Produto</h3>
+            </div>
+            <div class="text-end">
+              <span class="badge bg-secondary">ID: #<span th:text="${produto.id}">1</span></span>
+            </div>
+          </div>
+
+          <div class="card-body p-4 p-md-5">
+            <div class="row g-4 mb-4">
+              <div class="col-md-6">
+                <div class="p-3 bg-light rounded-3 border">
+                  <small class="text-muted d-block fw-semibold">Preço Unitário</small>
+                  <h3 class="fw-bold text-primary mb-0" th:text="'R$ ' + ${#numbers.formatDecimal(produto.preco, 1, 'POINT', 2, 'COMMA')}">R$ 0,00</h3>
+                </div>
+              </div>
+
+              <div class="col-md-6">
+                <div class="p-3 bg-light rounded-3 border">
+                  <small class="text-muted d-block fw-semibold">Estoque Disponível</small>
+                  <h3 class="fw-bold mb-0"
+                      th:classappend="${produto.estoque <= 5} ? 'text-danger' : 'text-success'"
+                      th:text="${produto.estoque} + ' unidades'">0 unidades</h3>
+                </div>
+              </div>
+
+              <div class="col-md-6">
+                <div class="p-3 bg-light rounded-3 border">
+                  <small class="text-muted d-block fw-semibold">Código de Barras (EAN-13)</small>
+                  <p class="fs-5 font-monospace fw-bold text-dark mb-0" th:text="${produto.codigoBarras != null ? produto.codigoBarras : 'Não cadastrado'}">789...</p>
+                </div>
+              </div>
+
+              <div class="col-md-6">
+                <div class="p-3 bg-light rounded-3 border">
+                  <small class="text-muted d-block fw-semibold">Data de Cadastro no Banco</small>
+                  <p class="fs-5 fw-bold text-dark mb-0" th:text="${produto.dataCadastro != null ? #temporals.format(produto.dataCadastro, 'dd/MM/yyyy HH:mm') : 'Hoje'}">01/09/2026</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Descrição -->
+            <div class="mb-4">
+              <h5 class="fw-bold text-dark mb-2">Descrição do Produto</h5>
+              <p class="text-muted" th:text="${produto.descricao != null and !#strings.isEmpty(produto.descricao)} ? ${produto.descricao} : 'Nenhuma descrição complementar cadastrada para este produto.'">
+                Descrição do produto.
+              </p>
+            </div>
+
+            <!-- Ações -->
+            <div class="d-flex justify-content-between align-items-center pt-4 border-top">
+              <a th:href="@{/produtos}" class="btn btn-outline-secondary px-4 rounded-pill">
+                <i class="bi bi-arrow-left me-1"></i> Voltar à Lista
+              </a>
+              <div class="d-flex gap-2">
+                <a th:href="@{/produtos/editar/{id}(id=${produto.id})}" class="btn btn-warning px-4 rounded-pill fw-semibold">
+                  <i class="bi bi-pencil-square me-1"></i> Editar
+                </a>
+                <a th:href="@{/produtos/excluir/{id}(id=${produto.id})}"
+                   class="btn btn-danger px-4 rounded-pill fw-semibold"
+                   sec:authorize="hasRole('ADMIN')"
+                   onclick="return confirm('Tem certeza de que deseja excluir este produto do banco de dados?');">
+                  <i class="bi bi-trash me-1"></i> Excluir
+                </a>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer th:replace="~{fragments/layout :: footer}"></footer>
+  <div th:replace="~{fragments/layout :: scripts}"></div>
+
+</body>
+</html>

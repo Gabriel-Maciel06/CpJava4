@@ -1,0 +1,89 @@
+/* ===================================================================
+   Mercado Express MVC - Custom Styling & Theme (Bootstrap 5 Enhancements)
+   =================================================================== */
+
+:root {
+  --primary-color: #0d6efd;
+  --secondary-color: #6c757d;
+  --success-color: #198754;
+  --danger-color: #dc3545;
+  --warning-color: #ffc107;
+  --dark-bg: #0f172a;
+  --card-bg: #ffffff;
+  --border-subtle: rgba(0, 0, 0, 0.08);
+}
+
+body {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  background-color: #f8fafc;
+  color: #1e293b;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex: 1;
+}
+
+.navbar-brand {
+  font-weight: 800;
+  letter-spacing: -0.5px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.card {
+  border: 1px solid var(--border-subtle);
+  border-radius: 14px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+  transition: all 0.2s ease-in-out;
+}
+
+.card:hover {
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+}
+
+/* Category Badges */
+.badge-limpeza { background-color: #0284c7; color: #fff; }
+.badge-hortifruti { background-color: #16a34a; color: #fff; }
+.badge-vestuario { background-color: #7c3aed; color: #fff; }
+.badge-brinquedos { background-color: #ea580c; color: #fff; }
+.badge-bebidas { background-color: #0d9488; color: #fff; }
+.badge-padaria { background-color: #ca8a04; color: #fff; }
+
+.badge-stock-ok { background-color: #dcfce7; color: #15803d; border: 1px solid #bbf7d0; }
+.badge-stock-low { background-color: #fee2e2; color: #b91c1c; border: 1px solid #fecaca; }
+
+/* Table Enhancements */
+.table > :not(caption) > * > * {
+  padding: 12px 16px;
+  vertical-align: middle;
+}
+
+.table-hover tbody tr:hover {
+  background-color: #f1f5f9;
+}
+
+/* Stat Cards */
+.stat-card {
+  border-left: 4px solid var(--primary-color);
+}
+.stat-card.success { border-left-color: var(--success-color); }
+.stat-card.warning { border-left-color: var(--warning-color); }
+.stat-card.danger { border-left-color: var(--danger-color); }
+
+/* Login Container */
+.login-card {
+  max-width: 420px;
+  margin: 60px auto;
+  border-radius: 16px;
+}
+
+/* Footer */
+footer {
+  background-color: #0f172a;
+  color: #94a3b8;
+  padding: 24px 0;
+}

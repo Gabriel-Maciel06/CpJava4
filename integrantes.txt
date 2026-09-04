@@ -1,32 +1,52 @@
-===================================================================
-FIAP - CHECKPOINT 4 - PARTE 1 (API E DEPLOY)
-CURSO: ANÁLISE E DESENVOLVIMENTO DE SISTEMAS / ENGENHARIA DE SOFTWARE
-TURMA: 2TDSPG / 2TDSR (2026)
-PROJETO: Mercado Express API - Spring Boot + HATEOAS + Oracle DB
-IDE UTILIZADA: IntelliJ IDEA (2024.2.3 Ultimate Edition)
-===================================================================
+================================================================================
+FIAP - TECNOLOGIA EM DESENVOLVIMENTO DE SISTEMAS
+CHECKPOINT 4 - DESENVOLVIMENTO WEB COM JAVA / SPRING BOOT
+PROFESSOR: MARCEL
+================================================================================
 
-INTEGRANTES DO GRUPO:
+1. INTEGRANTES DO GRUPO:
+- Gabriel Maciel Alves de Oliveira (RM562795)
+- Vitória Rodrigues Martins (RM565160)
+- Augusto Bonomo Júnior (RM565155)
+- Thomas Fontes (RM562254)
+- Matheus Pereira Molina (RM563399)
 
-1. Gabriel Maciel Alves de Oliveira
-   RM: 562795
+--------------------------------------------------------------------------------
+2. INFORMAÇÕES DO REPOSITÓRIO GITHUB:
+- Repositório GitHub Oficial (Partes 1 e 2):
+  https://github.com/Gabriel-Maciel06/CpJava4.git
 
-2. Vitória Rodrigues Martins 
-   RM: 565160
+- IDE Utilizada para Elaboração do Projeto:
+  IntelliJ IDEA Ultimate Edition (compatível também com Eclipse e NetBeans via Maven)
 
-3. Augusto Bonomo Júnior 
-   RM: 565155
+--------------------------------------------------------------------------------
+3. LINKS DE DEPLOY E SISTEMAS UTILIZADOS:
+- Link de Deploy - Parte 2 (Spring Web MVC & Security):
+  http://mercado-express-rm562795.chilecentral.azurecontainer.io:8090
 
-4. Thomas Fontes 
-   RM: 562254
+- Link de Deploy - Parte 1 (Spring REST API HATEOAS / Swagger):
+  http://57.156.33.102:8082/swagger-ui.html
 
-5. Matheus Pereira Molina
-   RM: 563399
+- Sistema Utilizado para o Deploy:
+  Microsoft Azure Container Instances / Azure Cloud VM (Docker Linux)
 
-===================================================================
-LINK DO REPOSITÓRIO GITHUB:
-https://github.com/Gabriel-Maciel06/CpJava4.git
+--------------------------------------------------------------------------------
+4. CREDENCIAIS DE ACESSO PARA AVALIAÇÃO DA PARTE 2:
+- Usuário Administrador (Acesso total + Exclusão de produtos):
+  Login: admin
+  Senha: admin123
+  Perfil: ROLE_ADMIN, ROLE_USER
 
-LINK DE DEPLOY DA API NA AZURE VM:
-http://57.156.33.102:8082/swagger-ui.html
-===================================================================
+- Usuário Operador (Leitura, Cadastro e Edição):
+  Login: operador
+  Senha: operador123
+  Perfil: ROLE_USER
+
+--------------------------------------------------------------------------------
+5. RESUMO DA PARTE 2 (SPRING WEB MVC):
+- Framework: Spring Boot 3.3.4 (Java 21 LTS) com Maven e Lombok
+- Interface Web: Thymeleaf 3 com Bootstrap 5.3 e layout fragments responsivos
+- Segurança: Spring Security 6 com tela de login customizada (/login) e proteção de rotas
+- Banco de Dados: Mapeamento JPA da tabela TDS_MVC_TB_MERCADO
+- Validação: Jakarta Bean Validation nos formulários (@NotBlank, @Positive, @Min)
+================================================================================
