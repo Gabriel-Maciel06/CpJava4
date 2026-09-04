@@ -15,7 +15,7 @@
 | **Matheus Pereira Molina** | **RM563399** |
 
 * **Repositório GitHub Oficial:** [https://github.com/Gabriel-Maciel06/CpJava4.git](https://github.com/Gabriel-Maciel06/CpJava4.git)
-* **Link do Vídeo de Demonstração (YouTube):** [https://www.youtube.com/watch?v=sOJWAZk0AmU](https://www.youtube.com/watch?v=sOJWAZk0AmU)
+* **Link do Vídeo de Demonstração (YouTube):** [https://youtu.be/w8OVQdRYYoM?is=PCi2W0lVdlxv9hQ9](https://youtu.be/w8OVQdRYYoM?is=PCi2W0lVdlxv9hQ9)
 * **Link de Deploy — Parte 1 (API REST Swagger):** [http://57.156.33.102:8082/swagger-ui.html](http://57.156.33.102:8082/swagger-ui.html)
 * **Link de Deploy — Parte 2 (Spring Web MVC & Security):** [http://mercado-express-rm562795.chilecentral.azurecontainer.io:8090](http://mercado-express-rm562795.chilecentral.azurecontainer.io:8090)
 * **Sistema Utilizado para o Deploy:** Microsoft Azure Container Instances / Azure Cloud VM (Docker Linux)

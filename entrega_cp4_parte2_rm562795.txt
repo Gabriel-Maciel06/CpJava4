@@ -17,7 +17,7 @@ PROFESSOR: MARCEL
   https://github.com/Gabriel-Maciel06/CpJava4.git
 
 - Link do Vídeo de Demonstração (YouTube):
-  https://www.youtube.com/watch?v=sOJWAZk0AmU
+  https://youtu.be/w8OVQdRYYoM?is=PCi2W0lVdlxv9hQ9
 
 - IDE Utilizada para Elaboração do Projeto:
   IntelliJ IDEA Ultimate Edition (compatível também com Eclipse e NetBeans via Maven)
