@@ -1,6 +1,7 @@
 ================================================================================
 FIAP - TECNOLOGIA EM DESENVOLVIMENTO DE SISTEMAS
-CHECKPOINT 4 - PARTE 2: SPRING WEB, MVC, SECURITY E DEPLOY
+CHECKPOINT 4 - DESENVOLVIMENTO WEB COM JAVA / SPRING BOOT
+PROFESSOR: MARCEL
 ================================================================================
 
 1. INTEGRANTES DO GRUPO:
@@ -11,22 +12,30 @@ CHECKPOINT 4 - PARTE 2: SPRING WEB, MVC, SECURITY E DEPLOY
 - Matheus Pereira Molina (RM563399)
 
 --------------------------------------------------------------------------------
-2. INFORMAÇÕES DO PROJETO E REPOSITÓRIO:
-- Repositório GitHub Oficial (Parte II Separada):
-  https://github.com/Gabriel-Maciel06/cp4-java-mercado-express-mvc
+2. INFORMAÇÕES DO REPOSITÓRIO GITHUB E VÍDEO:
+- Repositório GitHub Oficial (Partes 1 e 2):
+  https://github.com/Gabriel-Maciel06/CpJava4.git
+
+- Link do Vídeo de Demonstração (YouTube):
+  https://www.youtube.com/watch?v=sOJWAZk0AmU
 
 - IDE Utilizada para Elaboração do Projeto:
-  IntelliJ IDEA (compatível também com Eclipse e NetBeans via Maven)
-
-- Link do Deploy em Produção:
-  http://mercado-express-rm562795.chilecentral.azurecontainer.io:8090
-
-- Sistema Utilizado para o Deploy:
-  Microsoft Azure Container Instances (PaaS / Docker Linux Container)
+  IntelliJ IDEA Ultimate Edition (compatível também com Eclipse e NetBeans via Maven)
 
 --------------------------------------------------------------------------------
-3. CREDENCIAIS DE ACESSO PARA AVALIAÇÃO DO PROFESSOR:
-- Usuário Administrador (Acesso total + Exclusão):
+3. LINKS DE DEPLOY E SISTEMAS UTILIZADOS:
+- Link de Deploy - Parte 2 (Spring Web MVC & Security):
+  http://mercado-express-rm562795.chilecentral.azurecontainer.io:8090
+
+- Link de Deploy - Parte 1 (Spring REST API HATEOAS / Swagger):
+  http://57.156.33.102:8082/swagger-ui.html
+
+- Sistema Utilizado para o Deploy:
+  Microsoft Azure Container Instances / Azure Cloud VM (Docker Linux)
+
+--------------------------------------------------------------------------------
+4. CREDENCIAIS DE ACESSO PARA AVALIAÇÃO DA PARTE 2:
+- Usuário Administrador (Acesso total + Exclusão de produtos):
   Login: admin
   Senha: admin123
   Perfil: ROLE_ADMIN, ROLE_USER
@@ -37,10 +46,10 @@ CHECKPOINT 4 - PARTE 2: SPRING WEB, MVC, SECURITY E DEPLOY
   Perfil: ROLE_USER
 
 --------------------------------------------------------------------------------
-4. RESUMO TÉCNICO:
-- Framework: Java 21 LTS + Spring Boot 3.3.4
-- Arquitetura: Spring MVC com Controllers (@Controller) e DTOs com Bean Validation
-- Interface Web: Thymeleaf 3 com layout fragments, Bootstrap 5.3 e ícones
-- Segurança: Spring Security 6 com autenticação por formulário customizado (/login)
-- Banco de Dados: Tabela TDS_MVC_TB_MERCADO mapeada via Spring Data JPA / Hibernate
+5. RESUMO DA PARTE 2 (SPRING WEB MVC):
+- Framework: Spring Boot 3.3.4 (Java 21 LTS) com Maven e Lombok
+- Interface Web: Thymeleaf 3 com Bootstrap 5.3 e layout fragments responsivos
+- Segurança: Spring Security 6 com tela de login customizada (/login) e proteção de rotas
+- Banco de Dados: Mapeamento JPA da tabela TDS_MVC_TB_MERCADO
+- Validação: Jakarta Bean Validation nos formulários (@NotBlank, @Positive, @Min)
 ================================================================================

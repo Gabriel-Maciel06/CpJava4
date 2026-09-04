@@ -12,9 +12,12 @@ PROFESSOR: MARCEL
 - Matheus Pereira Molina (RM563399)
 
 --------------------------------------------------------------------------------
-2. INFORMAÇÕES DO REPOSITÓRIO GITHUB:
+2. INFORMAÇÕES DO REPOSITÓRIO GITHUB E VÍDEO:
 - Repositório GitHub Oficial (Partes 1 e 2):
   https://github.com/Gabriel-Maciel06/CpJava4.git
+
+- Link do Vídeo de Demonstração (YouTube):
+  https://www.youtube.com/watch?v=sOJWAZk0AmU
 
 - IDE Utilizada para Elaboração do Projeto:
   IntelliJ IDEA Ultimate Edition (compatível também com Eclipse e NetBeans via Maven)
